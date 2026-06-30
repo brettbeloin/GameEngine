@@ -1,9 +1,0 @@
-/home/brett/Documents/GameEngine/build/CMakeFiles/Engine.dir
-/home/brett/Documents/GameEngine/build/CMakeFiles/GameEngine.dir
-/home/brett/Documents/GameEngine/build/CMakeFiles/edit_cache.dir
-/home/brett/Documents/GameEngine/build/CMakeFiles/rebuild_cache.dir
-/home/brett/Documents/GameEngine/build/external/SDL3/CMakeFiles/SDL3-shared.dir
-/home/brett/Documents/GameEngine/build/external/SDL3/CMakeFiles/SDL3_test.dir
-/home/brett/Documents/GameEngine/build/external/SDL3/CMakeFiles/SDL_uclibc.dir
-/home/brett/Documents/GameEngine/build/external/SDL3/CMakeFiles/edit_cache.dir
-/home/brett/Documents/GameEngine/build/external/SDL3/CMakeFiles/rebuild_cache.dir
