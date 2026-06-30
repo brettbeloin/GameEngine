@@ -1,0 +1,1800 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/brett/.config/emacs/bin/uname"
+      - "/usr/local/go/bin/uname"
+      - "/home/brett/.local/bin/uname"
+      - "/home/brett/.cargo/bin/uname"
+      - "/home/john/.local/share/pnpm/uname"
+      - "/home/john/.local/bin/uname"
+      - "/home/john/.config/emacs/bin/uname"
+      - "/home/john/.cargo/bin/uname"
+      - "/home/brett/.local/share/pnpm/bin/uname"
+      - "/usr/local/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Linux - 6.19.10-300.fc44.x86_64 - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gmake"
+      - "make"
+      - "smake"
+    candidate_directories:
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    searched_directories:
+      - "/home/brett/.config/emacs/bin/gmake"
+      - "/usr/local/go/bin/gmake"
+      - "/home/brett/.local/bin/gmake"
+      - "/home/brett/.cargo/bin/gmake"
+      - "/home/john/.local/share/pnpm/gmake"
+      - "/home/john/.local/bin/gmake"
+      - "/home/john/.config/emacs/bin/gmake"
+      - "/home/john/.cargo/bin/gmake"
+      - "/home/brett/.local/share/pnpm/bin/gmake"
+      - "/usr/local/bin/gmake"
+    found: "/usr/bin/gmake"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompiler.cmake:73 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:69 (_cmake_find_compiler)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER"
+    description: "CXX compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "c++"
+      - "CC"
+      - "g++"
+      - "aCC"
+      - "cl"
+      - "bcc"
+      - "xlC"
+      - "icpx"
+      - "icx"
+      - "clang++"
+    candidate_directories:
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    searched_directories:
+      - "/home/brett/.config/emacs/bin/c++"
+      - "/usr/local/go/bin/c++"
+      - "/home/brett/.local/bin/c++"
+      - "/home/brett/.cargo/bin/c++"
+      - "/home/john/.local/share/pnpm/c++"
+      - "/home/john/.local/bin/c++"
+      - "/home/john/.config/emacs/bin/c++"
+      - "/home/john/.cargo/bin/c++"
+      - "/home/brett/.local/share/pnpm/bin/c++"
+      - "/usr/local/bin/c++"
+    found: "/usr/bin/c++"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+    found: "/usr/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/c++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/brett/GameEngine/build/CMakeFiles/4.3.0/CompilerIdCXX/a.out
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    found: "/usr/bin/ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    found: "/usr/bin/ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "strip"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    found: "/usr/bin/strip"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    found: "/usr/bin/ld"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "nm"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    found: "/usr/bin/nm"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objdump"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    found: "/usr/bin/objdump"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objcopy"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    found: "/usr/bin/objcopy"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "readelf"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    found: "/usr/bin/readelf"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "dlltool"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    searched_directories:
+      - "/usr/bin/dlltool"
+      - "/home/brett/.config/emacs/bin/dlltool"
+      - "/usr/local/go/bin/dlltool"
+      - "/home/brett/.local/bin/dlltool"
+      - "/home/brett/.cargo/bin/dlltool"
+      - "/home/john/.local/share/pnpm/dlltool"
+      - "/home/john/.local/bin/dlltool"
+      - "/home/john/.config/emacs/bin/dlltool"
+      - "/home/john/.cargo/bin/dlltool"
+      - "/home/brett/.local/share/pnpm/bin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/usr/sbin/dlltool"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/dlltool"
+      - "/home/brett/go/bin/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "addr2line"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    found: "/usr/bin/addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    searched_directories:
+      - "/usr/bin/tapi"
+      - "/home/brett/.config/emacs/bin/tapi"
+      - "/usr/local/go/bin/tapi"
+      - "/home/brett/.local/bin/tapi"
+      - "/home/brett/.cargo/bin/tapi"
+      - "/home/john/.local/share/pnpm/tapi"
+      - "/home/john/.local/bin/tapi"
+      - "/home/john/.config/emacs/bin/tapi"
+      - "/home/john/.cargo/bin/tapi"
+      - "/home/brett/.local/share/pnpm/bin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/sbin/tapi"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/tapi"
+      - "/home/brett/go/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gcc-ar-16.0"
+      - "gcc-ar-16"
+      - "gcc-ar16"
+      - "gcc-ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    searched_directories:
+      - "/usr/bin/gcc-ar-16.0"
+      - "/home/brett/.config/emacs/bin/gcc-ar-16.0"
+      - "/usr/local/go/bin/gcc-ar-16.0"
+      - "/home/brett/.local/bin/gcc-ar-16.0"
+      - "/home/brett/.cargo/bin/gcc-ar-16.0"
+      - "/home/john/.local/share/pnpm/gcc-ar-16.0"
+      - "/home/john/.local/bin/gcc-ar-16.0"
+      - "/home/john/.config/emacs/bin/gcc-ar-16.0"
+      - "/home/john/.cargo/bin/gcc-ar-16.0"
+      - "/home/brett/.local/share/pnpm/bin/gcc-ar-16.0"
+      - "/usr/local/bin/gcc-ar-16.0"
+      - "/usr/local/sbin/gcc-ar-16.0"
+      - "/usr/sbin/gcc-ar-16.0"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/gcc-ar-16.0"
+      - "/home/brett/go/bin/gcc-ar-16.0"
+      - "/usr/bin/gcc-ar-16"
+      - "/home/brett/.config/emacs/bin/gcc-ar-16"
+      - "/usr/local/go/bin/gcc-ar-16"
+      - "/home/brett/.local/bin/gcc-ar-16"
+      - "/home/brett/.cargo/bin/gcc-ar-16"
+      - "/home/john/.local/share/pnpm/gcc-ar-16"
+      - "/home/john/.local/bin/gcc-ar-16"
+      - "/home/john/.config/emacs/bin/gcc-ar-16"
+      - "/home/john/.cargo/bin/gcc-ar-16"
+      - "/home/brett/.local/share/pnpm/bin/gcc-ar-16"
+      - "/usr/local/bin/gcc-ar-16"
+      - "/usr/local/sbin/gcc-ar-16"
+      - "/usr/sbin/gcc-ar-16"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/gcc-ar-16"
+      - "/home/brett/go/bin/gcc-ar-16"
+      - "/usr/bin/gcc-ar16"
+      - "/home/brett/.config/emacs/bin/gcc-ar16"
+      - "/usr/local/go/bin/gcc-ar16"
+      - "/home/brett/.local/bin/gcc-ar16"
+      - "/home/brett/.cargo/bin/gcc-ar16"
+      - "/home/john/.local/share/pnpm/gcc-ar16"
+      - "/home/john/.local/bin/gcc-ar16"
+      - "/home/john/.config/emacs/bin/gcc-ar16"
+      - "/home/john/.cargo/bin/gcc-ar16"
+      - "/home/brett/.local/share/pnpm/bin/gcc-ar16"
+      - "/usr/local/bin/gcc-ar16"
+      - "/usr/local/sbin/gcc-ar16"
+      - "/usr/sbin/gcc-ar16"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/gcc-ar16"
+      - "/home/brett/go/bin/gcc-ar16"
+    found: "/usr/bin/gcc-ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gcc-ranlib-16.0"
+      - "gcc-ranlib-16"
+      - "gcc-ranlib16"
+      - "gcc-ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/brett/.config/emacs/bin/"
+      - "/usr/local/go/bin/"
+      - "/home/brett/.local/bin/"
+      - "/home/brett/.cargo/bin/"
+      - "/home/john/.local/share/pnpm/"
+      - "/home/john/.local/bin/"
+      - "/home/john/.config/emacs/bin/"
+      - "/home/john/.cargo/bin/"
+      - "/home/brett/.local/share/pnpm/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/"
+      - "/home/brett/go/bin/"
+    searched_directories:
+      - "/usr/bin/gcc-ranlib-16.0"
+      - "/home/brett/.config/emacs/bin/gcc-ranlib-16.0"
+      - "/usr/local/go/bin/gcc-ranlib-16.0"
+      - "/home/brett/.local/bin/gcc-ranlib-16.0"
+      - "/home/brett/.cargo/bin/gcc-ranlib-16.0"
+      - "/home/john/.local/share/pnpm/gcc-ranlib-16.0"
+      - "/home/john/.local/bin/gcc-ranlib-16.0"
+      - "/home/john/.config/emacs/bin/gcc-ranlib-16.0"
+      - "/home/john/.cargo/bin/gcc-ranlib-16.0"
+      - "/home/brett/.local/share/pnpm/bin/gcc-ranlib-16.0"
+      - "/usr/local/bin/gcc-ranlib-16.0"
+      - "/usr/local/sbin/gcc-ranlib-16.0"
+      - "/usr/sbin/gcc-ranlib-16.0"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/gcc-ranlib-16.0"
+      - "/home/brett/go/bin/gcc-ranlib-16.0"
+      - "/usr/bin/gcc-ranlib-16"
+      - "/home/brett/.config/emacs/bin/gcc-ranlib-16"
+      - "/usr/local/go/bin/gcc-ranlib-16"
+      - "/home/brett/.local/bin/gcc-ranlib-16"
+      - "/home/brett/.cargo/bin/gcc-ranlib-16"
+      - "/home/john/.local/share/pnpm/gcc-ranlib-16"
+      - "/home/john/.local/bin/gcc-ranlib-16"
+      - "/home/john/.config/emacs/bin/gcc-ranlib-16"
+      - "/home/john/.cargo/bin/gcc-ranlib-16"
+      - "/home/brett/.local/share/pnpm/bin/gcc-ranlib-16"
+      - "/usr/local/bin/gcc-ranlib-16"
+      - "/usr/local/sbin/gcc-ranlib-16"
+      - "/usr/sbin/gcc-ranlib-16"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/gcc-ranlib-16"
+      - "/home/brett/go/bin/gcc-ranlib-16"
+      - "/usr/bin/gcc-ranlib16"
+      - "/home/brett/.config/emacs/bin/gcc-ranlib16"
+      - "/usr/local/go/bin/gcc-ranlib16"
+      - "/home/brett/.local/bin/gcc-ranlib16"
+      - "/home/brett/.cargo/bin/gcc-ranlib16"
+      - "/home/john/.local/share/pnpm/gcc-ranlib16"
+      - "/home/john/.local/bin/gcc-ranlib16"
+      - "/home/john/.config/emacs/bin/gcc-ranlib16"
+      - "/home/john/.cargo/bin/gcc-ranlib16"
+      - "/home/brett/.local/share/pnpm/bin/gcc-ranlib16"
+      - "/usr/local/bin/gcc-ranlib16"
+      - "/usr/local/sbin/gcc-ranlib16"
+      - "/usr/sbin/gcc-ranlib16"
+      - "/home/brett/.local/share/JetBrains/Toolbox/scripts/gcc-ranlib16"
+      - "/home/brett/go/bin/gcc-ranlib16"
+    found: "/usr/bin/gcc-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/brett/GameEngine/build/CMakeFiles/CMakeScratch/TryCompile-LLckUD"
+      binary: "/home/brett/GameEngine/build/CMakeFiles/CMakeScratch/TryCompile-LLckUD"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/brett/GameEngine/build/CMakeFiles/CMakeScratch/TryCompile-LLckUD'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3054e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_3054e.dir/build.make CMakeFiles/cmTC_3054e.dir/build
+        gmake[1]: Entering directory '/home/brett/GameEngine/build/CMakeFiles/CMakeScratch/TryCompile-LLckUD'
+        Building CXX object CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -o CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-redhat-linux
+        Configured with: ../configure --enable-bootstrap --enable-languages=c,c++,fortran,objc,obj-c++,ada,go,d,m2,cobol,algol68,lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugzilla.redhat.com/ --enable-shared --enable-threads=posix --enable-checking=release --enable-multilib --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-libstdcxx-backtrace --with-libstdcxx-zoneinfo=/usr/share/zoneinfo --with-linker-hash-style=gnu --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-16.0.1-build/gcc-16.0.1-20260321/obj-x86_64-redhat-linux/isl-install --enable-offload-targets=nvptx-none,amdgcn-amdhsa --enable-offload-defaulted --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-tls=gnu2 --with-arch_32=i686 --build=x86_64-redhat-linux --with-build-config=bootstrap-lto --enable-link-serialization=1 --disable-libssp
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 16.0.1 20260321 (Red Hat 16.0.1-0) (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-mtls-dialect=gnu2' '-dumpdir' 'CMakeFiles/cmTC_3054e.dir/'
+         /usr/libexec/gcc/x86_64-redhat-linux/16/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_3054e.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -mtls-dialect=gnu2 -version -o /tmp/cccjMfzB.s
+        GNU C++20 (GCC) version 16.0.1 20260321 (Red Hat 16.0.1-0) (x86_64-redhat-linux)
+        	compiled by GNU C version 16.0.1 20260321 (Red Hat 16.0.1-0), GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.24-GMP
+        
+        warning: MPC header version 1.3.1 differs from library version 1.4.0.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-redhat-linux/16/include-fixed"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-redhat-linux/16/../../../../x86_64-redhat-linux/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16
+         /usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16/x86_64-redhat-linux
+         /usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16/backward
+         /usr/lib/gcc/x86_64-redhat-linux/16/include
+         /usr/local/include
+         /usr/include
+        End of search list.
+        Compiler executable checksum: 581224c9b53e01ce90214ca58bc833d2
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-mtls-dialect=gnu2' '-dumpdir' 'CMakeFiles/cmTC_3054e.dir/'
+         as -v --64 -o CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o /tmp/cccjMfzB.s
+        GNU assembler version 2.46 (x86_64-redhat-linux) using BFD version version 2.46-1.fc44
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/16/:/usr/libexec/gcc/x86_64-redhat-linux/16/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/16/:/usr/lib/gcc/x86_64-redhat-linux/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/16/:/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/16/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-mtls-dialect=gnu2' '-dumpdir' 'CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_3054e
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3054e.dir/link.txt --verbose=1
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/16/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-redhat-linux
+        Configured with: ../configure --enable-bootstrap --enable-languages=c,c++,fortran,objc,obj-c++,ada,go,d,m2,cobol,algol68,lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugzilla.redhat.com/ --enable-shared --enable-threads=posix --enable-checking=release --enable-multilib --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-libstdcxx-backtrace --with-libstdcxx-zoneinfo=/usr/share/zoneinfo --with-linker-hash-style=gnu --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-16.0.1-build/gcc-16.0.1-20260321/obj-x86_64-redhat-linux/isl-install --enable-offload-targets=nvptx-none,amdgcn-amdhsa --enable-offload-defaulted --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-tls=gnu2 --with-arch_32=i686 --build=x86_64-redhat-linux --with-build-config=bootstrap-lto --enable-link-serialization=1 --disable-libssp
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 16.0.1 20260321 (Red Hat 16.0.1-0) (GCC) 
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/16/:/usr/libexec/gcc/x86_64-redhat-linux/16/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/16/:/usr/lib/gcc/x86_64-redhat-linux/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/16/:/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/16/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3054e' '-foffload-options=-l_GCC_stdc++' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-mtls-dialect=gnu2' '-dumpdir' 'cmTC_3054e.'
+         /usr/libexec/gcc/x86_64-redhat-linux/16/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/16/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/16/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6mlsZt.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-latomic_asneeded -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3054e /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/16/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/16 -L/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/16/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -latomic_asneeded -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/16/crtend.o /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crtn.o
+        collect2 version 16.0.1 20260321 (Red Hat 16.0.1-0)
+        /usr/bin/ld -plugin /usr/libexec/gcc/x86_64-redhat-linux/16/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/16/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6mlsZt.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-latomic_asneeded -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3054e /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/16/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/16 -L/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/16/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -latomic_asneeded -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/16/crtend.o /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crtn.o
+        GNU ld version 2.46-1.fc44
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3054e' '-foffload-options=-l_GCC_stdc++' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-mtls-dialect=gnu2' '-dumpdir' 'cmTC_3054e.'
+        /usr/bin/c++  -v -Wl,-v CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_3054e
+        gmake[1]: Leaving directory '/home/brett/GameEngine/build/CMakeFiles/CMakeScratch/TryCompile-LLckUD'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16]
+          add: [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16/x86_64-redhat-linux]
+          add: [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16/backward]
+          add: [/usr/lib/gcc/x86_64-redhat-linux/16/include]
+          add: [/usr/local/include]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16] ==> [/usr/include/c++/16]
+        collapse include dir [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16/x86_64-redhat-linux] ==> [/usr/include/c++/16/x86_64-redhat-linux]
+        collapse include dir [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16/backward] ==> [/usr/include/c++/16/backward]
+        collapse include dir [/usr/lib/gcc/x86_64-redhat-linux/16/include] ==> [/usr/lib/gcc/x86_64-redhat-linux/16/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/include/c++/16;/usr/include/c++/16/x86_64-redhat-linux;/usr/include/c++/16/backward;/usr/lib/gcc/x86_64-redhat-linux/16/include;/usr/local/include;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/home/brett/GameEngine/build/CMakeFiles/CMakeScratch/TryCompile-LLckUD']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3054e/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_3054e.dir/build.make CMakeFiles/cmTC_3054e.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/brett/GameEngine/build/CMakeFiles/CMakeScratch/TryCompile-LLckUD']
+        ignore line: [Building CXX object CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-redhat-linux]
+        ignore line: [Configured with: ../configure --enable-bootstrap --enable-languages=c c++ fortran objc obj-c++ ada go d m2 cobol algol68 lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugzilla.redhat.com/ --enable-shared --enable-threads=posix --enable-checking=release --enable-multilib --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-libstdcxx-backtrace --with-libstdcxx-zoneinfo=/usr/share/zoneinfo --with-linker-hash-style=gnu --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-16.0.1-build/gcc-16.0.1-20260321/obj-x86_64-redhat-linux/isl-install --enable-offload-targets=nvptx-none amdgcn-amdhsa --enable-offload-defaulted --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-tls=gnu2 --with-arch_32=i686 --build=x86_64-redhat-linux --with-build-config=bootstrap-lto --enable-link-serialization=1 --disable-libssp]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 16.0.1 20260321 (Red Hat 16.0.1-0) (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-mtls-dialect=gnu2' '-dumpdir' 'CMakeFiles/cmTC_3054e.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-redhat-linux/16/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_3054e.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -mtls-dialect=gnu2 -version -o /tmp/cccjMfzB.s]
+        ignore line: [GNU C++20 (GCC) version 16.0.1 20260321 (Red Hat 16.0.1-0) (x86_64-redhat-linux)]
+        ignore line: [	compiled by GNU C version 16.0.1 20260321 (Red Hat 16.0.1-0)  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [warning: MPC header version 1.3.1 differs from library version 1.4.0.]
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-redhat-linux/16/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-redhat-linux/16/../../../../x86_64-redhat-linux/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16]
+        ignore line: [ /usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16/x86_64-redhat-linux]
+        ignore line: [ /usr/lib/gcc/x86_64-redhat-linux/16/../../../../include/c++/16/backward]
+        ignore line: [ /usr/lib/gcc/x86_64-redhat-linux/16/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: 581224c9b53e01ce90214ca58bc833d2]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-mtls-dialect=gnu2' '-dumpdir' 'CMakeFiles/cmTC_3054e.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o /tmp/cccjMfzB.s]
+        ignore line: [GNU assembler version 2.46 (x86_64-redhat-linux) using BFD version version 2.46-1.fc44]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/16/:/usr/libexec/gcc/x86_64-redhat-linux/16/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/16/:/usr/lib/gcc/x86_64-redhat-linux/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/16/:/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/16/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-mtls-dialect=gnu2' '-dumpdir' 'CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_3054e]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3054e.dir/link.txt --verbose=1]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/16/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-redhat-linux]
+        ignore line: [Configured with: ../configure --enable-bootstrap --enable-languages=c c++ fortran objc obj-c++ ada go d m2 cobol algol68 lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugzilla.redhat.com/ --enable-shared --enable-threads=posix --enable-checking=release --enable-multilib --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-libstdcxx-backtrace --with-libstdcxx-zoneinfo=/usr/share/zoneinfo --with-linker-hash-style=gnu --enable-plugin --enable-initfini-array --with-isl=/builddir/build/BUILD/gcc-16.0.1-build/gcc-16.0.1-20260321/obj-x86_64-redhat-linux/isl-install --enable-offload-targets=nvptx-none amdgcn-amdhsa --enable-offload-defaulted --without-cuda-driver --enable-gnu-indirect-function --enable-cet --with-tune=generic --with-tls=gnu2 --with-arch_32=i686 --build=x86_64-redhat-linux --with-build-config=bootstrap-lto --enable-link-serialization=1 --disable-libssp]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 16.0.1 20260321 (Red Hat 16.0.1-0) (GCC) ]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/16/:/usr/libexec/gcc/x86_64-redhat-linux/16/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/16/:/usr/lib/gcc/x86_64-redhat-linux/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/16/:/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/16/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3054e' '-foffload-options=-l_GCC_stdc++' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-mtls-dialect=gnu2' '-dumpdir' 'cmTC_3054e.']
+        link line: [ /usr/libexec/gcc/x86_64-redhat-linux/16/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/16/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/16/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6mlsZt.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-latomic_asneeded -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3054e /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/16/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/16 -L/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/16/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -latomic_asneeded -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/16/crtend.o /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crtn.o]
+          arg [/usr/libexec/gcc/x86_64-redhat-linux/16/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/libexec/gcc/x86_64-redhat-linux/16/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/16/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc6mlsZt.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-latomic_asneeded] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--no-add-needed] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_3054e] ==> ignore
+          arg [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crt1.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crt1.o]
+          arg [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crti.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crti.o]
+          arg [/usr/lib/gcc/x86_64-redhat-linux/16/crtbegin.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/16/crtbegin.o]
+          arg [-L/usr/lib/gcc/x86_64-redhat-linux/16] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/16]
+          arg [-L/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/usr/lib/gcc/x86_64-redhat-linux/16/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/16/../../..]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-L/usr/lib] ==> dir [/usr/lib]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-latomic_asneeded] ==> lib [atomic_asneeded]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/usr/lib/gcc/x86_64-redhat-linux/16/crtend.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/16/crtend.o]
+          arg [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crtn.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crtn.o]
+        ignore line: [collect2 version 16.0.1 20260321 (Red Hat 16.0.1-0)]
+        ignore line: [/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-redhat-linux/16/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/16/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6mlsZt.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-latomic_asneeded -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3054e /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/16/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/16 -L/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/16/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_3054e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -latomic_asneeded -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/16/crtend.o /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crtn.o]
+        linker tool for 'CXX': /usr/bin/ld
+        collapse obj [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crti.o] ==> [/usr/lib64/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-redhat-linux/16] ==> [/usr/lib/gcc/x86_64-redhat-linux/16]
+        collapse library dir [/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64] ==> [/usr/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/usr/lib/gcc/x86_64-redhat-linux/16/../../..] ==> [/usr/lib]
+        collapse library dir [/lib] ==> [/lib]
+        collapse library dir [/usr/lib] ==> [/usr/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;atomic_asneeded;c;gcc_s;gcc]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/usr/lib/gcc/x86_64-redhat-linux/16/crtbegin.o;/usr/lib/gcc/x86_64-redhat-linux/16/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-redhat-linux/16;/usr/lib64;/lib64;/usr/lib;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "/usr/bin/ld" "-v"
+      GNU ld version 2.46-1.fc44
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "external/SDL3/cmake/sdlcpu.cmake:97 (try_compile)"
+      - "external/SDL3/cmake/SDL3ConfigVersion.cmake:32 (SDL_DetectTargetCPUArchitectures)"
+      - "CMakeLists.txt:8 (find_package)"
+    directories:
+      source: "/home/brett/GameEngine/build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp"
+      binary: "/home/brett/GameEngine/build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "SDL_CPU_CHECK_ALL"
+      cached: true
+      stdout: |
+        Change Dir: '/home/brett/GameEngine/build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f7822/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_f7822.dir/build.make CMakeFiles/cmTC_f7822.dir/build
+        gmake[1]: Entering directory '/home/brett/GameEngine/build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_f7822.dir/SDL_detect_arch.cpp.o
+        /usr/bin/c++   -std=gnu++23 -o CMakeFiles/cmTC_f7822.dir/SDL_detect_arch.cpp.o -c /home/brett/GameEngine/build/CMakeFiles/CMakeTmp/SDL_detect_arch.cpp
+        Linking CXX static library libcmTC_f7822.a
+        /usr/bin/cmake -P CMakeFiles/cmTC_f7822.dir/cmake_clean_target.cmake
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f7822.dir/link.txt --verbose=1
+        /usr/bin/ar qc libcmTC_f7822.a CMakeFiles/cmTC_f7822.dir/SDL_detect_arch.cpp.o
+        /usr/bin/ranlib libcmTC_f7822.a
+        gmake[1]: Leaving directory '/home/brett/GameEngine/build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:8 (find_package)"
+    name: "SDL3"
+    configs:
+      -
+        filename: "SDL3.cps"
+        kind: "cps"
+      -
+        filename: "sdl3.cps"
+        kind: "cps"
+      -
+        filename: "SDL3Config.cmake"
+        kind: "cmake"
+      -
+        filename: "sdl3-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "SDL3"
+      search_paths:
+        - "external/SDL3"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/brett/GameEngine/build/CMakeFiles/pkgRedirects/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/GameEngine/build/CMakeFiles/pkgRedirects/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/GameEngine/build/CMakeFiles/pkgRedirects/lib64/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/GameEngine/build/CMakeFiles/pkgRedirects/lib64/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/GameEngine/build/CMakeFiles/pkgRedirects/lib/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/GameEngine/build/CMakeFiles/pkgRedirects/lib/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/GameEngine/build/CMakeFiles/pkgRedirects/share/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/GameEngine/build/CMakeFiles/pkgRedirects/share/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/lib64/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/lib64/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/lib/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/lib/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.cargo/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.cargo/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.cargo/lib64/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.cargo/lib64/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.cargo/lib/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.cargo/lib/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.cargo/share/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.cargo/share/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/pnpm/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/pnpm/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/pnpm/lib64/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/pnpm/lib64/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/pnpm/lib/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/pnpm/lib/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/pnpm/share/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/pnpm/share/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/lib64/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/lib64/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/lib/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/lib/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/share/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/share/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/lib64/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/lib64/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/lib/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/lib/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/share/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/share/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/JetBrains/Toolbox/scripts/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/JetBrains/Toolbox/scripts/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/JetBrains/Toolbox/scripts/lib64/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/JetBrains/Toolbox/scripts/lib64/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/JetBrains/Toolbox/scripts/lib/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/JetBrains/Toolbox/scripts/lib/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/JetBrains/Toolbox/scripts/share/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/.local/share/JetBrains/Toolbox/scripts/share/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/go/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/go/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/go/lib64/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/go/lib64/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/go/lib/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/go/lib/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/go/share/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/go/share/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/lib64/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/lib64/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/lib/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/lib/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/share/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/share/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/lib64/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/lib64/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/lib/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/lib/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/share/cps/SDL3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/share/cps/sdl3.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/brett/GameEngine/external/SDL3/SDL3Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/brett/GameEngine/external/SDL3/sdl3-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "/home/brett/GameEngine/external/SDL3/cmake/SDL3Config.cmake"
+      mode: "config"
+      version: "3.4.10"
+    search_context:
+      ENV{PATH}:
+        - "/home/brett/.config/emacs/bin"
+        - "/usr/local/go/bin"
+        - "/home/brett/.local/bin"
+        - "/home/brett/.cargo/bin"
+        - "/home/john/.local/share/pnpm"
+        - "/home/john/.local/bin"
+        - "/home/john/.config/emacs/bin"
+        - "/home/john/.cargo/bin"
+        - "/home/brett/.local/share/pnpm/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/home/brett/.local/share/JetBrains/Toolbox/scripts"
+        - "/home/brett/go/bin"
+        - "/home/brett/go/bin"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+...

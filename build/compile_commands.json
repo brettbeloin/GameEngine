@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/brett/GameEngine/build",
+  "command": "/usr/bin/c++  -I/home/brett/GameEngine/headers -isystem /home/brett/GameEngine/external/SDL3/include -std=gnu++23 -o CMakeFiles/Engine.dir/Engine/Engine.cpp.o -c /home/brett/GameEngine/Engine/Engine.cpp",
+  "file": "/home/brett/GameEngine/Engine/Engine.cpp",
+  "output": "CMakeFiles/Engine.dir/Engine/Engine.cpp.o"
+},
+{
+  "directory": "/home/brett/GameEngine/build",
+  "command": "/usr/bin/c++  -I/home/brett/GameEngine/headers -isystem /home/brett/GameEngine/external/SDL3/include -std=gnu++23 -o CMakeFiles/GameEngine.dir/src/Game.cpp.o -c /home/brett/GameEngine/src/Game.cpp",
+  "file": "/home/brett/GameEngine/src/Game.cpp",
+  "output": "CMakeFiles/GameEngine.dir/src/Game.cpp.o"
+}
+]
