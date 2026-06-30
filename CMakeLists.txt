@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-find_package(SDL3 REQUIRED CONFIG PATHS external/SDL3)
+add_subdirectory(external/SDL3)
 
 add_library(Engine STATIC
     Engine/Engine.cpp

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/brett/GameEngine
+CMAKE_SOURCE_DIR = /home/brett/Documents/GameEngine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/brett/GameEngine/build
+CMAKE_BINARY_DIR = /home/brett/Documents/GameEngine/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Engine.dir/depend.make
@@ -73,18 +73,18 @@ CMakeFiles/Engine.dir/codegen:
 .PHONY : CMakeFiles/Engine.dir/codegen
 
 CMakeFiles/Engine.dir/Engine/Engine.cpp.o: CMakeFiles/Engine.dir/flags.make
-CMakeFiles/Engine.dir/Engine/Engine.cpp.o: /home/brett/GameEngine/Engine/Engine.cpp
+CMakeFiles/Engine.dir/Engine/Engine.cpp.o: /home/brett/Documents/GameEngine/Engine/Engine.cpp
 CMakeFiles/Engine.dir/Engine/Engine.cpp.o: CMakeFiles/Engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brett/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Engine.dir/Engine/Engine.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Engine.dir/Engine/Engine.cpp.o -MF CMakeFiles/Engine.dir/Engine/Engine.cpp.o.d -o CMakeFiles/Engine.dir/Engine/Engine.cpp.o -c /home/brett/GameEngine/Engine/Engine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brett/Documents/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Engine.dir/Engine/Engine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Engine.dir/Engine/Engine.cpp.o -MF CMakeFiles/Engine.dir/Engine/Engine.cpp.o.d -o CMakeFiles/Engine.dir/Engine/Engine.cpp.o -c /home/brett/Documents/GameEngine/Engine/Engine.cpp
 
 CMakeFiles/Engine.dir/Engine/Engine.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Engine.dir/Engine/Engine.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brett/GameEngine/Engine/Engine.cpp > CMakeFiles/Engine.dir/Engine/Engine.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brett/Documents/GameEngine/Engine/Engine.cpp > CMakeFiles/Engine.dir/Engine/Engine.cpp.i
 
 CMakeFiles/Engine.dir/Engine/Engine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Engine.dir/Engine/Engine.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brett/GameEngine/Engine/Engine.cpp -o CMakeFiles/Engine.dir/Engine/Engine.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brett/Documents/GameEngine/Engine/Engine.cpp -o CMakeFiles/Engine.dir/Engine/Engine.cpp.s
 
 # Object files for target Engine
 Engine_OBJECTS = \
@@ -95,8 +95,9 @@ Engine_EXTERNAL_OBJECTS =
 
 libEngine.a: CMakeFiles/Engine.dir/Engine/Engine.cpp.o
 libEngine.a: CMakeFiles/Engine.dir/build.make
+libEngine.a: /home/brett/Documents/GameEngine/external/SDL3/src/dynapi/SDL_dynapi.sym
 libEngine.a: CMakeFiles/Engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brett/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libEngine.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brett/Documents/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libEngine.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/Engine.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Engine.dir/link.txt --verbose=$(VERBOSE)
 
@@ -109,6 +110,6 @@ CMakeFiles/Engine.dir/clean:
 .PHONY : CMakeFiles/Engine.dir/clean
 
 CMakeFiles/Engine.dir/depend:
-	cd /home/brett/GameEngine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/brett/GameEngine /home/brett/GameEngine /home/brett/GameEngine/build /home/brett/GameEngine/build /home/brett/GameEngine/build/CMakeFiles/Engine.dir/DependInfo.cmake "--color=$(COLOR)" Engine
+	cd /home/brett/Documents/GameEngine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/brett/Documents/GameEngine /home/brett/Documents/GameEngine /home/brett/Documents/GameEngine/build /home/brett/Documents/GameEngine/build /home/brett/Documents/GameEngine/build/CMakeFiles/Engine.dir/DependInfo.cmake "--color=$(COLOR)" Engine
 .PHONY : CMakeFiles/Engine.dir/depend
 

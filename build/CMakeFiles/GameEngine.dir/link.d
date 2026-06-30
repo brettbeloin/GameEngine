@@ -4,7 +4,7 @@ GameEngine: \
   /usr/lib/gcc/x86_64-redhat-linux/16/crtbegin.o \
   CMakeFiles/GameEngine.dir/src/Game.cpp.o \
   libEngine.a \
-  /home/brett/GameEngine/external/SDL3/lib/x64/SDL3.dll \
+  external/SDL3/libSDL3.so.0.5.0 \
   /usr/lib/gcc/x86_64-redhat-linux/16/libstdc++.so \
   /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libm.so \
   /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libm.so \
@@ -50,7 +50,7 @@ CMakeFiles/GameEngine.dir/src/Game.cpp.o:
 
 libEngine.a:
 
-/home/brett/GameEngine/external/SDL3/lib/x64/SDL3.dll:
+external/SDL3/libSDL3.so.0.5.0:
 
 /usr/lib/gcc/x86_64-redhat-linux/16/libstdc++.so:
 

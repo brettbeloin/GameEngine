@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/GameEngine.dir/link.d CMakeFiles/GameEngine.dir/src/Game.cpp.o -o GameEngine  -Wl,-rpath,/home/brett/GameEngine/external/SDL3/lib/x64 libEngine.a /home/brett/GameEngine/external/SDL3/lib/x64/SDL3.dll
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/GameEngine.dir/link.d CMakeFiles/GameEngine.dir/src/Game.cpp.o -o GameEngine  -Wl,-rpath,/home/brett/Documents/GameEngine/build/external/SDL3 libEngine.a external/SDL3/libSDL3.so.0.5.0

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/brett/GameEngine/headers -isystem /home/brett/GameEngine/external/SDL3/include
+CXX_INCLUDES = -I/home/brett/Documents/GameEngine/headers -I/home/brett/Documents/GameEngine/build/external/SDL3/include-revision -I/home/brett/Documents/GameEngine/external/SDL3/include
 
 CXX_FLAGS = -std=gnu++23
 

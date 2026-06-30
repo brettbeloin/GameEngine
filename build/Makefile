@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/brett/GameEngine
+CMAKE_SOURCE_DIR = /home/brett/Documents/GameEngine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/brett/GameEngine/build
+CMAKE_BINARY_DIR = /home/brett/Documents/GameEngine/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brett/GameEngine/build/CMakeFiles /home/brett/GameEngine/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brett/Documents/GameEngine/build/CMakeFiles /home/brett/Documents/GameEngine/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brett/GameEngine/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brett/Documents/GameEngine/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -113,6 +113,7 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P /home/brett/Documents/GameEngine/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -141,6 +142,45 @@ GameEngine: cmake_check_build_system
 GameEngine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/build
 .PHONY : GameEngine/fast
+
+#=============================================================================
+# Target rules for targets named SDL3-shared
+
+# Build rule for target.
+SDL3-shared: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDL3-shared
+.PHONY : SDL3-shared
+
+# fast build rule for target.
+SDL3-shared/fast:
+	$(MAKE) $(MAKESILENT) -f external/SDL3/CMakeFiles/SDL3-shared.dir/build.make external/SDL3/CMakeFiles/SDL3-shared.dir/build
+.PHONY : SDL3-shared/fast
+
+#=============================================================================
+# Target rules for targets named SDL3_test
+
+# Build rule for target.
+SDL3_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDL3_test
+.PHONY : SDL3_test
+
+# fast build rule for target.
+SDL3_test/fast:
+	$(MAKE) $(MAKESILENT) -f external/SDL3/CMakeFiles/SDL3_test.dir/build.make external/SDL3/CMakeFiles/SDL3_test.dir/build
+.PHONY : SDL3_test/fast
+
+#=============================================================================
+# Target rules for targets named SDL_uclibc
+
+# Build rule for target.
+SDL_uclibc: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDL_uclibc
+.PHONY : SDL_uclibc
+
+# fast build rule for target.
+SDL_uclibc/fast:
+	$(MAKE) $(MAKESILENT) -f external/SDL3/CMakeFiles/SDL_uclibc.dir/build.make external/SDL3/CMakeFiles/SDL_uclibc.dir/build
+.PHONY : SDL_uclibc/fast
 
 Engine/Engine.o: Engine/Engine.cpp.o
 .PHONY : Engine/Engine.o
@@ -200,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Engine"
 	@echo "... GameEngine"
+	@echo "... SDL3-shared"
+	@echo "... SDL3_test"
+	@echo "... SDL_uclibc"
 	@echo "... Engine/Engine.o"
 	@echo "... Engine/Engine.i"
 	@echo "... Engine/Engine.s"
@@ -217,6 +260,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/brett/Documents/GameEngine/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
