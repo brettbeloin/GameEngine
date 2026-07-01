@@ -1,4 +1,5 @@
 // #include "../Engine/Engine.cpp"
+#include "Engine.h"
 #include <SDL3/SDL.h>
 #include <iostream>
 
@@ -6,9 +7,6 @@ int main(int argc, char *argv[]) {
   SDL_Init(SDL_INIT_VIDEO);
   int window_width, window_height;
   window_width = window_height = 500;
-
-  float rect_width, rect_height;
-  rect_width = rect_height = 50.0f;
 
   SDL_Window *window =
       SDL_CreateWindow("Game Engine", window_width, window_height, 0);
@@ -29,11 +27,13 @@ int main(int argc, char *argv[]) {
   SDL_Event e;
   bool quit = false;
 
+  rect rect = {200, 200, 200, 200};
+
   // Define a rectangle
   SDL_FRect greenSquare{
-      (static_cast<float>(window_width) / 2) - (rect_width / 2),
-      (static_cast<float>(window_height) / 2) - (rect_height / 2), rect_width,
-      rect_height};
+      (static_cast<float>(window_width) / 2) - (rect.rect_width / 2),
+      (static_cast<float>(window_height) / 2) - (rect.rect_height / 2),
+      rect.pos_x, rect.pos_y};
 
   while (!quit) {
     while (SDL_PollEvent(&e)) {
