@@ -1,7 +1,13 @@
 // #include "../Engine/Engine.cpp"
 #include "Engine.h"
+#include "SDL3/SDL_oldnames.h"
 #include <SDL3/SDL.h>
 #include <iostream>
+
+bool isResizable(SDL_Window *Window) {
+  SDL_WindowFlags Flags{SDL_GetWindowFlags(Window)};
+  return Flags & SDL_WINDOW_RESIZABLE;
+}
 
 int main(int argc, char *argv[]) {
   SDL_Init(SDL_INIT_VIDEO);
@@ -29,16 +35,32 @@ int main(int argc, char *argv[]) {
 
   rect rect = {200, 200, 200, 200};
 
+  SDL_SetWindowResizable(window, true);
+
+  if (isResizable(window)) {
+    std::cout << "Window is resizable\n";
+  }
+
   // Define a rectangle
   SDL_FRect greenSquare{
-      (static_cast<float>(window_width) / 2) - (rect.rect_width / 2),
-      (static_cast<float>(window_height) / 2) - (rect.rect_height / 2),
-      rect.pos_x, rect.pos_y};
+      (static_cast<float>(window_width) / 2) - (rect.pos_x / 2),
+      (static_cast<float>(window_height) / 2) - (rect.pos_y / 2),
+      rect.rect_width, rect.rect_height};
 
   while (!quit) {
     while (SDL_PollEvent(&e)) {
       if (e.type == SDL_EVENT_QUIT) {
         quit = true;
+      } else if (e.type == SDL_EVENT_WINDOW_RESIZED) {
+        // Update tracking variables with the new dimensions
+        window_width = e.window.data1;
+        window_height = e.window.data2;
+
+        // Recalculate X and Y positions to keep the square centered
+        greenSquare.x =
+            (static_cast<float>(window_width) / 2.0f) - (greenSquare.w / 2.0f);
+        greenSquare.y =
+            (static_cast<float>(window_height) / 2.0f) - (greenSquare.h / 2.0f);
       }
     }
 
