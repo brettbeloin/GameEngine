@@ -9,6 +9,7 @@ add_subdirectory(external/SDL3)
 
 add_library(Engine STATIC
     Engine/Engine.cpp
+    Engine/Renderer.cpp
     )
 
 target_include_directories(Engine PUBLIC headers/)
@@ -17,8 +18,7 @@ target_link_libraries(Engine PUBLIC SDL3::SDL3)
 add_executable(GameEngine)
 
 target_sources(GameEngine PRIVATE
-    src/Game.cpp
+    Game/Game.cpp
     )
 
 target_link_libraries(GameEngine PRIVATE Engine)
-
