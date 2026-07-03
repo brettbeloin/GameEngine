@@ -1,13 +1,7 @@
-// #include "../Engine/Engine.cpp"
+#include "../Engine/Engine.cpp"
 #include "Engine.h"
-#include "SDL3/SDL_oldnames.h"
 #include <SDL3/SDL.h>
 #include <iostream>
-
-bool isResizable(SDL_Window *Window) {
-  SDL_WindowFlags Flags{SDL_GetWindowFlags(Window)};
-  return Flags & SDL_WINDOW_RESIZABLE;
-}
 
 int main(int argc, char *argv[]) {
   SDL_Init(SDL_INIT_VIDEO);
@@ -33,19 +27,10 @@ int main(int argc, char *argv[]) {
   SDL_Event e;
   bool quit = false;
 
-  rect rect = {200, 200, 200, 200};
-
-  SDL_SetWindowResizable(window, true);
-
-  if (isResizable(window)) {
-    std::cout << "Window is resizable\n";
-  }
-
   // Define a rectangle
-  SDL_FRect greenSquare{
-      (static_cast<float>(window_width) / 2) - (rect.pos_x / 2),
-      (static_cast<float>(window_height) / 2) - (rect.pos_y / 2),
-      rect.rect_width, rect.rect_height};
+  SDL_FRect greenSquare{(static_cast<float>(window_width) / 2) - (50.0f / 2),
+                        (static_cast<float>(window_height) / 2) - (50.05f / 2),
+                        50.0f, 50.0f}; // x, y, width, height
 
   while (!quit) {
     while (SDL_PollEvent(&e)) {
@@ -73,7 +58,8 @@ int main(int argc, char *argv[]) {
     SDL_RenderFillRect(renderer, &greenSquare); // Render the rectangle
 
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Set text Color to red
-    SDL_RenderDebugText(renderer, 10, 10, "Hello world"); // Render the text
+    SDL_RenderDebugText(renderer, 10, 10,
+                        Engine::fnEngine()); // Render the text
 
     SDL_RenderPresent(renderer); // Render the screen
   }
