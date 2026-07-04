@@ -3,13 +3,11 @@
 #include "pch.h"
 
 namespace Engine {
-// class Window;
 class Renderer;
 
 struct Window {
   const char *window_title;
   int window_width, window_height;
-  // SDL_Window* sdlWindow; // Pointer to the SDL window
 };
 
 class Renderer {
@@ -19,13 +17,17 @@ private:
 
 public:
   bool Initialize(const Window &window);
-  // Renderer(int width, int height);
+  void Destroy();
   // ~Renderer();
 
   void Clear();
   void Present();
-  void SetDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-  void DrawRect(const SDL_FRect &rect) const;
-  void Destroy(); // Method to destroy the renderer and window
+
+  void SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+  void DrawFillRect(float x, float y, float w, float h) const;
+  void DrawRect(float x, float y, float w, float h) const;
+  void DrawPoint(float x, float y) const;
+  void DrawText(const char *text, float x, float y, float w,
+                float h) const; // Method to draw text (placeholder)
 };
 } // namespace Engine

@@ -28,13 +28,32 @@ void Engine::Renderer::Clear() { SDL_RenderClear(m_renderer); }
 
 void Engine::Renderer::Present() { SDL_RenderPresent(m_renderer); }
 
-void Engine::Renderer::SetDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
+void Engine::Renderer::SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
   SDL_SetRenderDrawColor(m_renderer, r, g, b, a);
 }
 
-void Engine::Renderer::DrawRect(const SDL_FRect &rect) const {
+void Engine::Renderer::DrawRect(float x, float y, float w, float h) const {
+  SDL_FRect rect = {x, y, w, h};
+  SDL_RenderRect(m_renderer, &rect); // Render the rectangle
+}
+
+void Engine::Renderer::DrawFillRect(float x, float y, float w, float h) const {
+  SDL_FRect rect = {x, y, w, h};
   SDL_RenderFillRect(m_renderer, &rect); // Render the rectangle
 }
+
+void Engine::Renderer::DrawPoint(float x, float y) const {
+  SDL_RenderPoint(m_renderer, x, y);
+}
+
+void Engine::Renderer::DrawText(const char *text, float x, float y, float w,
+                                float h) const {
+  // Placeholder for text rendering
+  // In a real implementation, you would use a library like SDL_ttf to render
+  // text
+  SDL_RenderDebugText(m_renderer, x, y, text); // Render the text
+}
+
 void Engine::Renderer::Destroy() {
   if (m_renderer) {
     SDL_DestroyRenderer(m_renderer);
