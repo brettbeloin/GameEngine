@@ -30,17 +30,28 @@ int main(int argc, char *argv[]) {
 
     renderer.Clear(); // Clear the screen
 
-    for (int i = 0; i < 100; ++i) {
+    // Draw a random point
+    for (int i = 0; i < 20; ++i) {
       renderer.SetColor(rand() % 256, rand() % 256, rand() % 256, 255);
       renderer.DrawPoint(rand() % window.window_width,
-                         rand() % window.window_height); // Draw a random point
+                         rand() % window.window_height);
     }
 
-    renderer.SetColor(rand() % 256, rand() % 256, rand() % 256, 255);
-    renderer.DrawFillRect(
-        (static_cast<float>(window.window_width) / 2) - (50.0f / 2),
-        (static_cast<float>(window.window_height) / 2) - (50.05f / 2), 50.0f,
-        50.0f); // Draw the rectangle
+    // Draw a random line
+    for (int i = 0; i < 10; ++i) {
+      renderer.SetColor(rand() % 256, rand() % 256, rand() % 256, 255);
+      renderer.DrawLine(
+          rand() % window.window_width, rand() % window.window_height,
+          rand() % window.window_width, rand() % window.window_height);
+    }
+
+    // Draw a random rectangle
+    for (int i = 0; i < 5; ++i) {
+      renderer.SetColor(rand() % 256, rand() % 256, rand() % 256, 255);
+      renderer.DrawFillRect(rand() % window.window_width,
+                            rand() % window.window_height, rand() % 100 + 20,
+                            rand() % 100 + 20);
+    }
 
     renderer.SetColor(rand() % 256, rand() % 256, rand() % 256, 255);
     renderer.DrawText("Hello, World!", 10.0f, 10.0f, 100.0f,

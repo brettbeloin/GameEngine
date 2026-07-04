@@ -24,10 +24,11 @@ public:
   void Present();
 
   void SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+
   void DrawFillRect(float x, float y, float w, float h) const;
   void DrawRect(float x, float y, float w, float h) const;
   void DrawPoint(float x, float y) const;
-  void DrawText(const char *text, float x, float y, float w,
-                float h) const; // Method to draw text (placeholder)
+  void DrawText(const char *text, float x, float y, float w, float h) const;
+  void DrawLine(float x1, float y1, float x2, float y2) const;
 };
 } // namespace Engine
