@@ -32,6 +32,10 @@ void Engine::Renderer::SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
   SDL_SetRenderDrawColor(m_renderer, r, g, b, a);
 }
 
+void Engine::Renderer::SetColor(float r, float g, float b, float a) {
+  SDL_SetRenderDrawColor(m_renderer, r, g, b, a);
+}
+
 void Engine::Renderer::DrawRect(float x, float y, float w, float h) const {
   SDL_FRect rect = {x, y, w, h};
   SDL_RenderRect(m_renderer, &rect); // Render the rectangle

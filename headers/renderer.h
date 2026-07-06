@@ -24,6 +24,7 @@ public:
   void Present();
 
   void SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+  void SetColor(float r, float g, float b, float a);
 
   void DrawFillRect(float x, float y, float w, float h) const;
   void DrawRect(float x, float y, float w, float h) const;
