@@ -10,6 +10,7 @@ add_subdirectory(external/SDL3)
 add_library(Engine STATIC
     Engine/Engine.cpp
     Engine/Renderer.cpp
+    Engine/Input.cpp
     )
 
 target_include_directories(Engine PUBLIC headers/)

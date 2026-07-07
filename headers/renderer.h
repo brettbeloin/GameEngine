@@ -7,18 +7,17 @@ namespace Engine {
 
     struct Window {
         const char *window_title;
-        int window_width, window_height;
+        int         window_width, window_height;
     };
 
     class Renderer {
       private:
-        SDL_Window *m_window = nullptr;     // Pointer to the SDL window
+        SDL_Window   *m_window = nullptr;   // Pointer to the SDL window
         SDL_Renderer *m_renderer = nullptr; // Pointer to the SDL renderer
 
       public:
         bool Initialize(const Window &window);
         void Destroy();
-        // ~Renderer();
 
         void Clear();
         void Present();

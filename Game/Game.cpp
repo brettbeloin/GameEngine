@@ -1,17 +1,18 @@
 #include "Engine.h"
+// #include "Input.h"
 #include "random.h"
 #include <vector>
-// #include "SDL3/SDL.h"
 
-#include <cstdlib>
 #include <iostream>
 
 int main(int argc, char *argv[]) {
-    Engine::Renderer renderer;
-    constexpr Engine::Window window = {"Game Engine", 500, 500}; // Set the window width and height
+    Engine::Renderer             renderer;
+    constexpr Engine::Window     window = {"Game Engine", 500, 500}; // Set the window width and height
 
-    float xs[30];
-    float yx[30];
+    float                        xs[30];
+    float                        yx[30];
+
+    Engine::Input                input;
 
     std::vector<Engine::Vector2> v;
 
@@ -26,53 +27,50 @@ int main(int argc, char *argv[]) {
     }
 
     std::cout << "Successfully initialized the renderer." << std::endl;
-
+input.Initialize();
+    // MAIN LOOP
     bool quit = false;
     while (!quit) {
 
-        // update
+        // UPDATE
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_EVENT_QUIT) {
                 quit = true;
             }
+
+            if (event.type == SDL_EVENT_KEY_DOWN && event.key.scancode == SDL_SCANCODE_ESCAPE) {
+                quit = true;
+            }
         }
-        // render
+
+        // Engine
+        input.Update();
+
+        if (input.GetKeyPressed(SDL_SCANCODE_Q)) {
+            std::cout << "Key down\n";
+        }
+
+        // RENDERER
+
+        // if (key_state[SDL_SCANCODE_SPACE]) {
+        //     std::cout << "space\n";
+        // }
+
+        Engine::Vector2 mouse_pos;
+        SDL_GetMouseState(&mouse_pos.x, &mouse_pos.y);
 
         renderer.SetColor(0.f, 0.f, 0.f, 255.f); // Set draw color to black
 
-        renderer.Clear(); // Clear the screen
+        renderer.Clear();                        // Clear the screen
 
-        // Draw a random point
-        for (size_t i = 0; i < v.size(); ++i) {
-            renderer.SetColor(static_cast<Uint8>(Engine::RandomInt(256)), Engine::RandomInt(256),
-                              Engine::RandomInt(256), 255);
-            renderer.DrawPoint(Engine::RandomInt(window.window_width),
-                               Engine::RandomInt(window.window_height));
-        }
+        for (int i = 0; i < v.size(); i++) {
+            v[i] = v[i] + 5;
+            renderer.DrawPoint(v[i].x, v[i].y);
+        };
 
-        // Draw a random line
-        for (int i = 0; i < 10; ++i) {
-            renderer.SetColor(static_cast<Uint8>(Engine::RandomInt(256)), Engine::RandomInt(256),
-                              Engine::RandomInt(256), 255);
-            renderer.DrawLine(
-                Engine::RandomInt(window.window_width), Engine::RandomInt(window.window_height),
-                Engine::RandomInt(window.window_width), Engine::RandomInt(window.window_height));
-        }
-
-        // Draw a random rectangle
-        for (int i = 0; i < 5; ++i) {
-            renderer.SetColor(static_cast<Uint8>(Engine::RandomInt(256)), Engine::RandomInt(256),
-                              Engine::RandomInt(256), 255);
-            renderer.DrawFillRect(Engine::RandomInt(window.window_width),
-                                  Engine::RandomInt(window.window_height),
-                                  Engine::RandomInt(100 + 20), Engine::RandomInt(100 + 20));
-        }
-
-        renderer.SetColor(static_cast<Uint8>(Engine::RandomInt(256)), Engine::RandomInt(256),
-                          Engine::RandomInt(256), 255);
-        renderer.DrawText("Hello, World!", 10.0f, 10.0f, 100.0f,
-                          30.0f); // Draw the text (placeholder)
+        renderer.SetColor(255.0f, 0.0f, 0.0f, 255);
+        renderer.DrawFillRect(input.GetMousePosition().x - 20, input.GetMousePosition().y - 20, 40, 40);
 
         renderer.Present(); // Present the rendered content to the
                             // screen
