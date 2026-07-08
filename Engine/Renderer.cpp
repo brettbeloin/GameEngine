@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "SDL3/SDL_render.h"
 #include <iostream>
 
 bool Engine::Renderer::Initialize(const Engine::Window &window) {
@@ -19,6 +20,8 @@ bool Engine::Renderer::Initialize(const Engine::Window &window) {
         SDL_Quit();
         return false;
     }
+
+    SDL_SetRenderVSync(m_renderer, 1);
 
     return true; // Return true if initialization is successful
 }

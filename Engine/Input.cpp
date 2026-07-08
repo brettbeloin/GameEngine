@@ -1,6 +1,8 @@
 #include "Input.h"
+#include "SDL3/SDL_mouse.h"
 #include "pch.h"
 #include <SDL3/SDL.h>
+#include <cstdint>
 
 bool Engine::Input::Initialize() {
     int         num_keys;
@@ -25,3 +27,7 @@ void Engine::Input::Update() {
     m_pre_button_states = m_button_states;
     m_button_states = SDL_GetMouseState(&m_mouse_pos.x, &m_mouse_pos.y);
 }
+
+uint32_t Engine::Input::GetButtonBit(MouseButton button) const {
+    return SDL_BUTTON_MASK(static_cast<uint32_t>(button));
+};

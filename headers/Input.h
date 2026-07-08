@@ -6,7 +6,7 @@
 namespace Engine {
     class Input {
       public:
-        enum MouseButton { LEFT = 1, MIDDLE, RIGHT };
+        enum class MouseButton { LEFT = 1, MIDDLE, RIGHT, x1, x2 };
 
       public:
         bool Initialize();
@@ -30,9 +30,20 @@ namespace Engine {
             return !m_key_states[key] && m_pre_key_states[key];
         }
 
-        bool GetMouseDown(MouseButton button) {
+        bool GetButtonDown(MouseButton button) {
+            return m_button_states & GetButtonBit(button);
+        }
 
-            return true;
+        bool GetPreButtonDown(MouseButton button) {
+            return m_pre_button_states & GetButtonBit(button);
+        }
+
+        bool GetButtonPressed(MouseButton button) {
+            return !GetPreButtonDown(button) && GetButtonDown(button);
+        }
+
+        bool GetButtonReleased(MouseButton button) {
+            return GetPreButtonDown(button) && !GetButtonDown(button);
         }
 
         Vector2 GetMousePosition() {
@@ -48,5 +59,6 @@ namespace Engine {
         uint32_t m_button_states = 0;
         uint32_t m_pre_button_states = 0;
         Vector2  m_mouse_pos;
+        uint32_t GetButtonBit(MouseButton button) const;
     };
 } // namespace Engine

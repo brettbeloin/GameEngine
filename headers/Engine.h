@@ -5,3 +5,5 @@
 
 #include "Input.h"
 #include "renderer.h"
+
+#include "GameTime.h"

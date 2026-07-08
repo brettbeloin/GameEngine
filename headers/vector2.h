@@ -43,20 +43,20 @@ namespace Engine {
         }
 
         Vector2 &operator+=(const Vector2 &v) {
-            this->x *= v.x;
-            this->x *= v.y;
+            this->x += v.x;
+            this->y += v.y;
             return *this;
         }
 
         Vector2 &operator-=(const Vector2 &v) {
-            this->x *= v.x;
-            this->x *= v.y;
+            this->x -= v.x;
+            this->y -= v.y;
             return *this;
         }
 
         Vector2 &operator*=(const Vector2 &v) {
             this->x *= v.x;
-            this->x *= v.y;
+            this->y *= v.y;
             return *this;
         }
 
@@ -68,25 +68,25 @@ namespace Engine {
 
         Vector2 &operator+=(float v) {
             this->x += v;
-            this->x += v;
+            this->y += v;
             return *this;
         }
 
         Vector2 &operator-=(float v) {
             this->x -= v;
-            this->x -= v;
+            this->y -= v;
             return *this;
         }
 
         Vector2 &operator*=(float v) {
             this->x *= v;
-            this->x *= v;
+            this->y *= v;
             return *this;
         }
 
         Vector2 &operator/=(float v) {
             this->x /= v;
-            this->x /= v;
+            this->y /= v;
             return *this;
         }
 
