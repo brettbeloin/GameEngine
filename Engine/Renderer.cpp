@@ -26,19 +26,19 @@ bool Engine::Renderer::Initialize(const Engine::Window &window) {
     return true; // Return true if initialization is successful
 }
 
-void Engine::Renderer::Clear() {
+void Engine::Renderer::Clear() const {
     SDL_RenderClear(m_renderer);
 }
 
-void Engine::Renderer::Present() {
+void Engine::Renderer::Present() const {
     SDL_RenderPresent(m_renderer);
 }
 
-void Engine::Renderer::SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
+void Engine::Renderer::SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) const {
     SDL_SetRenderDrawColor(m_renderer, r, g, b, a);
 }
 
-void Engine::Renderer::SetColor(float r, float g, float b, float a) {
+void Engine::Renderer::SetColor(float r, float g, float b, float a) const {
     SDL_SetRenderDrawColor(m_renderer, r, g, b, a);
 }
 

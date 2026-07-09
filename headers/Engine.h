@@ -7,3 +7,4 @@
 #include "renderer.h"
 
 #include "GameTime.h"
+#include "MathUtils.h"

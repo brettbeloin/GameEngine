@@ -19,11 +19,11 @@ namespace Engine {
         bool Initialize(const Window &window);
         void Destroy();
 
-        void Clear();
-        void Present();
+        void Clear() const;
+        void Present() const;
 
-        void SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-        void SetColor(float r, float g, float b, float a);
+        void SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) const;
+        void SetColor(float r, float g, float b, float a) const;
 
         void DrawFillRect(float x, float y, float w, float h) const;
         void DrawRect(float x, float y, float w, float h) const;
