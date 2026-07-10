@@ -1,8 +1,6 @@
 #include "Input.h"
-#include "SDL3/SDL_mouse.h"
 #include "pch.h"
 #include <SDL3/SDL.h>
-#include <cstdint>
 
 bool Engine::Input::Initialize() {
     int         num_keys;

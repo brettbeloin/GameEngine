@@ -1,6 +1,7 @@
 #pragma once
 #include "framework.h"
 #include "pch.h"
+#include "random.h"
 #include "vector2.h"
 
 #include "Input.h"

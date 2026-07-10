@@ -1,10 +1,6 @@
 #include "Engine.h"
-#include "Input.h"
-#include "random.h"
-#include "vector2.h"
-#include <vector>
-
 #include <iostream>
+#include <vector>
 
 struct Transform {
     Engine::Vector2 position;
