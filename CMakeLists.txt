@@ -12,6 +12,7 @@ add_library(Engine STATIC
     Engine/Renderer.cpp
     Engine/Input.cpp
     Engine/GameTime.cpp
+    Engine/Actor.cpp
     )
 
 target_include_directories(Engine PUBLIC headers/)

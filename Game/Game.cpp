@@ -2,68 +2,14 @@
 #include <iostream>
 #include <vector>
 
-struct Transform {
-    Engine::Vector2 position;
-    float           rotation;
-    float           scale;
-};
-
-class Actor {
-  public:
-    Actor() = default;
-    Actor(const Transform &transform) : m_transform{transform} {};
-
-    void Update(float dt) {
-        m_transform.position += (m_velocity * dt);
-        m_velocity *= .9;
-
-        // m_transform.scale = 50;
-        m_transform.position.x = Engine::Math::Clamp(0.f, 500.f, m_transform.position.x);
-        m_transform.position.y = Engine::Math::Wrap(0.f, 500.f, m_transform.position.y);
-    }
-
-    void Draw(const Engine::Renderer &renderer) {
-        renderer.SetColor(static_cast<Uint8>(255), 0.0, 0.0, 255);
-        renderer.DrawFillRect(m_transform.position.x - (m_transform.scale * .5f),
-                              m_transform.position.y - (m_transform.scale * .5f), m_transform.scale, m_transform.scale);
-    }
-
-    const Transform &GetTransform() const {
-        return m_transform;
-    }
-
-    const Engine::Vector2 &GetVelocity() const {
-        return m_velocity;
-    }
-
-    void SetScale(float scale) {
-        m_transform.scale = scale;
-    }
-
-    void SetVelocity(const Engine::Vector2 &position) {
-        m_velocity = position;
-    }
-
-    void SetRotation(float rotation) {
-        m_transform.rotation = rotation;
-    }
-
-    // const Engine::Vector2 &SetVector() {
-    // }
-
-  protected:
-    Transform       m_transform;
-    Engine::Vector2 m_velocity;
-};
-
 int main(int argc, char *argv[]) {
     Engine::Renderer     renderer;
     const Engine::Window window = {"Game Engine", 500, 500}; // Set the window width and height
 
-    Actor                player{
-        Transform{Engine::Vector2{(static_cast<float>(window.window_width) / 2),
-                                  (static_cast<float>(window.window_height) / 2)},
-                  0.f, 50.0f}
+    Engine::Actor        player{
+        Engine::Transform{Engine::Vector2{(static_cast<float>(window.window_width) / 2),
+                                          (static_cast<float>(window.window_height) / 2)},
+                          0.f, 50.0f}
     };
     Engine::Time                 time;
 
@@ -120,12 +66,6 @@ int main(int argc, char *argv[]) {
         player.SetVelocity(player.GetVelocity() + (force * time.GetDeltaTime()));
         player.Update(time.GetDeltaTime());
 
-        // if (pos.x > window.window_width)
-        //     pos.x = 0;
-        // if (pos.x < 0) {
-        //     pos.x = window.window_width;
-        // }
-
         // RENDERER
 
         Engine::Vector2 mouse_pos;
@@ -157,11 +97,6 @@ int main(int argc, char *argv[]) {
             renderer.SetColor(Engine::RandomFloat(256), Engine::RandomFloat(256), Engine::RandomFloat(256), 255);
             renderer.DrawLine(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
         }
-
-        // for (int i = 0; i < static_cast<int>(points.size()) - 1; i++) {
-        //     renderer.SetColor(Engine::RandomFloat(256), Engine::RandomFloat(256), Engine::RandomFloat(256), 255);
-        //     renderer.DrawLine(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
-        // }
 
         player.Draw(renderer);
 

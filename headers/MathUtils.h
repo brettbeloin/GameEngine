@@ -1,7 +1,6 @@
 #pragma once
 
-#include <algorithm>
-namespace Engine::Math {
+namespace Engine {
     template <typename T> T Wrap(T min, T max, T value) {
         if (value > max) {
             value = min;
@@ -36,4 +35,4 @@ namespace Engine::Math {
     float TwoPi = Pi * 2;
     float HalfPi = Pi / 2;
 
-} // namespace Engine::Math
+} // namespace Engine

@@ -1,4 +1,6 @@
 #pragma once
+#include "Actor.h"
+#include "Transform.h"
 #include "framework.h"
 #include "pch.h"
 #include "random.h"
@@ -8,4 +10,4 @@
 #include "renderer.h"
 
 #include "GameTime.h"
-#include "MathUtils.h"
+// #include "MathUtils.h"
