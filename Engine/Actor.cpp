@@ -13,9 +13,12 @@ namespace Engine {
     }
 
     void Actor::Draw(const Renderer &renderer) const {
-        renderer.SetColor(static_cast<Uint8>(255), 0.0, 0.0, 255);
-        renderer.DrawFillRect(m_transform.position.x - (m_transform.scale * .5f),
-                              m_transform.position.y - (m_transform.scale * .5f), m_transform.scale, m_transform.scale);
+        renderer.SetColor(m_model.GetColor().r, m_model.GetColor().g, m_model.GetColor().b, 255);
+
+        // renderer.SetColor(static_cast<Uint8>(255), 0.0, 0.0, 255);
+        // renderer.DrawPoint(m_transform.position.x, m_transform.position.y);
+        renderer.DrawLine(m_transform.position.x - (m_transform.scale * .5f),
+                          m_transform.position.y - (m_transform.scale * .5f), m_transform.scale, m_transform.scale);
     }
 
 } // namespace Engine

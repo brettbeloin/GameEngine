@@ -1,4 +1,7 @@
 #include "Engine.h"
+#include "Mesh.h"
+#include "vector2.h"
+#include "vector3.h"
 #include <iostream>
 #include <vector>
 
@@ -6,11 +9,18 @@ int main(int argc, char *argv[]) {
     Engine::Renderer     renderer;
     const Engine::Window window = {"Game Engine", 500, 500}; // Set the window width and height
 
-    Engine::Actor        player{
+    Engine::Mesh         mesh{
+        std::vector<Engine::Vector2>{{-3.0f, 3.0f}, {3.0f, 3.0f}, {0.0f, 0.0f}},
+        Engine::Vector3{          255,            0,            0}
+    };
+
+    Engine::Actor player{
         Engine::Transform{Engine::Vector2{(static_cast<float>(window.window_width) / 2),
                                           (static_cast<float>(window.window_height) / 2)},
-                          0.f, 50.0f}
+                          0, 50},
+        {mesh}
     };
+
     Engine::Time                 time;
 
     Engine::Input                input;
@@ -18,7 +28,7 @@ int main(int argc, char *argv[]) {
     std::vector<Engine::Vector2> points;
 
     float                        speed = 50.f;
-    Engine::Vector2              volocity{0.0f, 0.0f};
+    Engine::Vector2              volocity = 0;
 
     if (const bool initSuccess = renderer.Initialize(window); !initSuccess) {
         std::cerr << "Failed to initialize the renderer." << std::endl;

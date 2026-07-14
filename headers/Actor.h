@@ -1,4 +1,5 @@
 #pragma once
+#include "Model.h"
 #include "Transform.h"
 
 namespace Engine {
@@ -6,6 +7,7 @@ namespace Engine {
       public:
         Actor() = default;
         Actor(const Transform &transform) : m_transform{transform} {};
+        Actor(const Transform &transform, const Mesh &mesh) : m_transform{transform}, m_model{mesh} {};
 
         void             Update(float dt);
 
@@ -34,5 +36,7 @@ namespace Engine {
       protected:
         Transform       m_transform;
         Engine::Vector2 m_velocity{0, 0};
+
+        Mesh            m_model;
     };
 } // namespace Engine
