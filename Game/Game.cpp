@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    std::cout << "Successfully initialized the renderer." << std::endl;
+    // std::cout << "Successfully initialized the renderer." << std::endl;
     input.Initialize();
 
     // MAIN LOOP
@@ -59,17 +59,17 @@ int main(int argc, char *argv[]) {
         time.Tick();
 
         Engine::Vector2 force{.0f, 0.f};
-        if (input.GetKeyDown(SDL_SCANCODE_A)) {
+        if (input.GetKeyDown(SDL_SCANCODE_A) || input.GetKeyDown(SDL_SCANCODE_LEFT)) {
             force.x += 1 - speed;
         }
 
-        if (input.GetKeyDown(SDL_SCANCODE_D)) {
+        if (input.GetKeyDown(SDL_SCANCODE_D) || input.GetKeyDown(SDL_SCANCODE_RIGHT)) {
             force.x += 1 + speed;
         }
-        if (input.GetKeyDown(SDL_SCANCODE_W)) {
+        if (input.GetKeyDown(SDL_SCANCODE_W) || input.GetKeyDown(SDL_SCANCODE_UP)) {
             force.y += 1 - speed;
         }
-        if (input.GetKeyDown(SDL_SCANCODE_S)) {
+        if (input.GetKeyDown(SDL_SCANCODE_S) || input.GetKeyDown(SDL_SCANCODE_DOWN)) {
             force.y += 1 + speed;
         }
 
