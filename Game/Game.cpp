@@ -1,9 +1,25 @@
 #include "Engine.h"
 #include "Mesh.h"
-#include "vector2.h"
+#include "fmod.hpp"
+#include "fmod_errors.h"
 #include "vector3.h"
 #include <iostream>
 #include <vector>
+
+void PlayAudio(const Engine::Input &engine, FMOD::System &audio, const std::vector<FMOD::Sound *> &sounds) {
+    if (engine.GetKeyPressed(SDL_SCANCODE_1)) {
+        std::cout << "whistle sound\n";
+        audio.playSound(sounds[0], nullptr, false, nullptr);
+    }
+
+    if (engine.GetKeyPressed(SDL_SCANCODE_2)) {
+        // play another sound
+        std::cout << "snare sound\n";
+        audio.playSound(sounds[1], nullptr, false, nullptr);
+    }
+
+    audio.update();
+}
 
 int main(int argc, char *argv[]) {
     Engine::Renderer     renderer;
@@ -29,6 +45,29 @@ int main(int argc, char *argv[]) {
 
     float                        speed = 50.f;
     Engine::Vector2              volocity = 0;
+
+    // create audio system
+    FMOD::System *audio;
+    FMOD::System_Create(&audio);
+    void *extradriverdata = nullptr;
+    audio->init(32, FMOD_INIT_NORMAL, extradriverdata);
+
+    std::vector<FMOD::Sound *> sounds;
+    FMOD::Sound               *sound = nullptr;
+
+    FMOD_RESULT                result = audio->createSound("sound/mp3/whistle.mp3", FMOD_DEFAULT, 0, &sound);
+    if (result != FMOD_OK) {
+        std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
+    }
+
+    sounds.push_back(sound);
+
+    result = audio->createSound("sound/wav/snare.wav", FMOD_DEFAULT, 0, &sound);
+    if (result != FMOD_OK) {
+        std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
+    }
+
+    sounds.push_back(sound);
 
     if (const bool initSuccess = renderer.Initialize(window); !initSuccess) {
         std::cerr << "Failed to initialize the renderer." << std::endl;
@@ -109,6 +148,8 @@ int main(int argc, char *argv[]) {
         }
 
         player.Draw(renderer);
+
+        PlayAudio(input, *audio, sounds);
 
         renderer.Present(); // Present the rendered content to the
                             // screen
