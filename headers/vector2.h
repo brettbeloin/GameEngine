@@ -136,8 +136,8 @@ namespace Engine {
         Vector2 Rotate(float radians) const {
             Vector2 v;
 
-            float   x = this->x * std::cos(radians) - this->y * std::sin(radians);
-            float   y = this->x * std::sin(radians) - this->y * std::cos(radians);
+           v.x  = this->x * std::cos(radians) - this->y * std::sin(radians);
+            v.y = this->x * std::sin(radians) - this->y * std::cos(radians);
 
             return v;
         }

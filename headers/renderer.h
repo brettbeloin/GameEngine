@@ -11,11 +11,7 @@ namespace Engine {
     };
 
     class Renderer {
-      private:
-        SDL_Window   *m_window = nullptr;   // Pointer to the SDL window
-        SDL_Renderer *m_renderer = nullptr; // Pointer to the SDL renderer
-
-      public:
+    public:
         bool Initialize(const Window &window);
         void Destroy();
 
@@ -32,5 +28,20 @@ namespace Engine {
         void DrawLine(float x1, float y1, float x2, float y2) const;
 
         void DrawModel(const class Model &model, const struct Transform &Transform) const;
+
+        int GetWidth() const {
+            return m_width;
+        }
+
+        int GetHeight() const {
+            return m_height;
+        }
+
+    private:
+        SDL_Window   *m_window = nullptr;   // Pointer to the SDL window
+        SDL_Renderer *m_renderer = nullptr; // Pointer to the SDL renderer
+        int m_width = 0;
+        int m_height = 0;
+
     };
 } // namespace Engine

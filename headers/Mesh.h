@@ -9,9 +9,7 @@ namespace Engine {
         Mesh() = default;
         Mesh(std::vector<Vector2> points, const Color &color) : m_points{points}, m_color{color} {};
 
-        std::vector<Vector2> GetPoints() const {
-            return m_points;
-        };
+        const std::vector<Vector2>& GetPoints() const { return m_points; }
 
         void SetPoints(const std::vector<Vector2> &points) {
             m_points = points;

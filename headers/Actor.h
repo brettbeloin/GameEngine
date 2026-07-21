@@ -1,42 +1,74 @@
 #pragma once
+#include <string>
+
 #include "Model.h"
 #include "Transform.h"
 
 namespace Engine {
     class Actor {
+    public:
+        struct ActorDesc {
+            std::string name;
+            std::string tag;
+            Transform transform;
+            Vector2 velocity;
+            Model model;
+        };
+
       public:
         Actor() = default;
-        Actor(const Transform &transform) : m_transform{transform} {};
-        Actor(const Transform &transform, const Mesh &mesh) : m_transform{transform}, m_model{mesh} {};
 
-        void             Update(float dt);
+        explicit Actor(const ActorDesc& actor_desc) : m_transform  {actor_desc.transform},  m_velocity {actor_desc.velocity}, m_model {actor_desc.model} {};
+        explicit Actor(const Transform &transform) : m_transform{transform} {};
+        explicit Actor(const Transform &transform, const Model &model) : m_transform{transform}, m_model{model} {};
 
-        void             Draw(const class Renderer &renderer) const;
+        virtual void     Update(float dt);
+
+        virtual void     Draw(const class Renderer &renderer) const;
 
         const Transform &GetTransform() const {
             return m_transform;
         }
 
-        const Engine::Vector2 &GetVelocity() const {
-            return m_velocity;
+        void SetPosition(const Vector2 &position) {
+            m_transform.position = position;
         }
 
-        void SetScale(float scale) {
+        void SetScale(const float scale) {
             m_transform.scale = scale;
         }
 
-        void SetVelocity(const Engine::Vector2 &position) {
-            m_velocity = position;
-        }
-
-        void SetRotation(float rotation) {
+        void SetRotation(const float rotation) {
             m_transform.rotation = rotation;
         }
 
-      protected:
-        Transform       m_transform;
-        Engine::Vector2 m_velocity{0, 0};
+        const Vector2 &GetVelocity() const {
+            return m_velocity;
+        }
 
-        Mesh            m_model;
+        void SetVelocity(const Vector2 &position) {
+            m_velocity = position;
+        }
+
+        void AddVelocity(const Vector2 &position) {
+            m_velocity = position;
+        }
+
+        const std::string& GetName() const {
+            return m_name;
+        }
+
+        const std::string& GetTag() const{
+            return m_tag;
+        }
+
+      protected:
+        std::string m_name;
+        std::string m_tag;
+
+        Transform m_transform;
+        Vector2   m_velocity{0, 0};
+
+        Model     m_model;
     };
 } // namespace Engine

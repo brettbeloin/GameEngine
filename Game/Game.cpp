@@ -6,6 +6,9 @@
 #include <iostream>
 #include <vector>
 
+#include "Enemy.h"
+#include "Player.h"
+
 void PlayAudio(const Engine::Input &engine, FMOD::System &audio, const std::vector<FMOD::Sound *> &sounds) {
     if (engine.GetKeyPressed(SDL_SCANCODE_1)) {
         std::cout << "whistle sound\n";
@@ -22,65 +25,92 @@ void PlayAudio(const Engine::Input &engine, FMOD::System &audio, const std::vect
 }
 
 int main(int argc, char *argv[]) {
-    Engine::Renderer     renderer;
-    const Engine::Window window = {"Game Engine", 500, 500}; // Set the window width and height
+    // Initalization
+    if (const bool init_success = Engine::g_engine.Initialize(); !init_success) {
+        return -1;
+    }
 
-    Engine::Mesh         mesh{
-        std::vector<Engine::Vector2>{{-3.0f, 3.0f}, {3.0f, 3.0f}, {0.0f, 0.0f}},
-        Engine::Vector3{          255,            0,            0}
+    std::cout << "Successfully initialized the renderer." << std::endl;
+
+    // mesh / model
+    const Engine::Mesh mesh{
+        {
+         {5, 0},
+         {3, -3},
+         {1, -3},
+         {-1, -2},
+         {0, -1},
+         {-2, 1},
+         {1, 1},
+         {5, 0},
+         },
+        Engine::Color{1.0, 0.0, 0.0}
     };
+    const Engine::Model model = std::vector{mesh};
 
-    Engine::Actor player{
-        Engine::Transform{Engine::Vector2{(static_cast<float>(window.window_width) / 2),
-                                          (static_cast<float>(window.window_height) / 2)},
-                          0, 50},
-        {mesh}
+    Engine::Scene       scene;
+
+    PlayerDesc          playerDesc;
+    playerDesc.name = "player";
+    playerDesc.model = model;
+    playerDesc.transform = Engine::Transform{
+        Engine::Vector2{(static_cast<float>(Engine::g_engine.GetWindow().window_width) / 2),
+                        (static_cast<float>(Engine::g_engine.GetWindow().window_height) / 2)},
+        0, 15
     };
+    playerDesc.speed = 50.0f;
 
-    Engine::Time                 time;
+    Player *player = new Player{playerDesc};
 
-    Engine::Input                input;
+    scene.AddActor(player);
 
+    for (int i = 0; i < 5; i++) {
+        EnemyDesc enemy_desc;
+        enemy_desc.name = "Enemy" + std::to_string(i + 1);
+        enemy_desc.model = model;
+        enemy_desc.transform = Engine::Transform{
+            Engine::Vector2{
+                            Engine::RandomFloat(static_cast<float>(Engine::g_engine.GetWindow().window_width)),
+                            Engine::RandomFloat(static_cast<float>(Engine::g_engine.GetWindow().window_height)),
+                            },
+            90.0f, 10.0f
+        };
+        enemy_desc.speed = 50.0f;
+
+        Enemy *enemy = new Enemy{enemy_desc};
+
+        scene.AddActor(enemy);
+    }
+
+    // Photoshop
     std::vector<Engine::Vector2> points;
-
-    float                        speed = 50.f;
-    Engine::Vector2              volocity = 0;
 
     // create audio system
     FMOD::System *audio;
     FMOD::System_Create(&audio);
-    void *extradriverdata = nullptr;
-    audio->init(32, FMOD_INIT_NORMAL, extradriverdata);
+    void *extra_driver_data = nullptr;
+    audio->init(32, FMOD_INIT_NORMAL, extra_driver_data);
 
     std::vector<FMOD::Sound *> sounds;
     FMOD::Sound               *sound = nullptr;
 
-    FMOD_RESULT                result = audio->createSound("sound/mp3/whistle.mp3", FMOD_DEFAULT, 0, &sound);
+    FMOD_RESULT                result = audio->createSound("sound/mp3/whistle.mp3", FMOD_DEFAULT, nullptr, &sound);
     if (result != FMOD_OK) {
         std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
     }
 
     sounds.push_back(sound);
 
-    result = audio->createSound("sound/wav/snare.wav", FMOD_DEFAULT, 0, &sound);
+    result = audio->createSound("sound/wav/snare.wav", FMOD_DEFAULT, nullptr, &sound);
     if (result != FMOD_OK) {
         std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
     }
 
     sounds.push_back(sound);
-
-    if (const bool initSuccess = renderer.Initialize(window); !initSuccess) {
-        std::cerr << "Failed to initialize the renderer." << std::endl;
-        return -1;
-    }
-
-    // std::cout << "Successfully initialized the renderer." << std::endl;
-    input.Initialize();
 
     // MAIN LOOP
     bool quit = false;
     while (!quit) {
-
         // UPDATE
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
@@ -94,69 +124,44 @@ int main(int argc, char *argv[]) {
         }
 
         // Engine
-        input.Update();
-        time.Tick();
+        Engine::g_engine.Update();
+        float dt = Engine::g_engine.GetTime().GetDeltaTime();
 
-        Engine::Vector2 force{.0f, 0.f};
-        if (input.GetKeyDown(SDL_SCANCODE_A) || input.GetKeyDown(SDL_SCANCODE_LEFT)) {
-            force.x += 1 - speed;
+        scene.Update(dt);
+
+        if (Engine::g_engine.GetInput().GetButtonPressed(Engine::Input::MouseButton::LEFT)) {
+            points.push_back(Engine::g_engine.GetInput().GetMousePosition());
         }
 
-        if (input.GetKeyDown(SDL_SCANCODE_D) || input.GetKeyDown(SDL_SCANCODE_RIGHT)) {
-            force.x += 1 + speed;
-        }
-        if (input.GetKeyDown(SDL_SCANCODE_W) || input.GetKeyDown(SDL_SCANCODE_UP)) {
-            force.y += 1 - speed;
-        }
-        if (input.GetKeyDown(SDL_SCANCODE_S) || input.GetKeyDown(SDL_SCANCODE_DOWN)) {
-            force.y += 1 + speed;
-        }
-
-        player.SetVelocity(player.GetVelocity() + (force * time.GetDeltaTime()));
-        player.Update(time.GetDeltaTime());
-
-        // RENDERER
-
-        Engine::Vector2 mouse_pos;
-        SDL_GetMouseState(&mouse_pos.x, &mouse_pos.y);
-
-        renderer.SetColor(0.f, 0.f, 0.f, 255.f); // Set draw color to black
-
-        renderer.Clear();                        // Clear the screen
-
-        // step one
-        if (input.GetButtonPressed(Engine::Input::MouseButton::LEFT)) {
-            // TODO: Add mouse position to std::vector.
-            points.push_back(input.GetMousePosition());
-        }
-
-        // step two
-        Engine::Vector2 position = input.GetMousePosition();
-        if (input.GetButtonDown(Engine::Input::MouseButton::LEFT)) {
+        Engine::Vector2 position = Engine::g_engine.GetInput().GetMousePosition();
+        if (Engine::g_engine.GetInput().GetButtonDown(Engine::Input::MouseButton::LEFT)) {
             if (points.empty()) {
-                points.push_back(input.GetMousePosition());
+                points.push_back(Engine::g_engine.GetInput().GetMousePosition());
             } else if ((position - points.back()).length() > 10) {
-                points.push_back(input.GetMousePosition());
+                points.push_back(Engine::g_engine.GetInput().GetMousePosition());
             }
         }
 
+        // Render
+        Engine::g_engine.GetRenderer().SetColor(0.f, 0.f, 0.f, 255.f); // Set draw color to black
+        Engine::g_engine.GetRenderer().Clear();                        // Clear the screen
+
         for (int i = 0; i < static_cast<int>(points.size()) - 1; i++) {
-            // TODO: Set color or random color.
-            // TODO: Call Renderer DrawLine with the std::vector [i] and [i + 1]
-            renderer.SetColor(Engine::RandomFloat(256), Engine::RandomFloat(256), Engine::RandomFloat(256), 255);
-            renderer.DrawLine(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
+            Engine::g_engine.GetRenderer().SetColor(Engine::RandomFloat(256), Engine::RandomFloat(256),
+                                                    Engine::RandomFloat(256), 255);
+            Engine::g_engine.GetRenderer().DrawLine(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
         }
 
-        player.Draw(renderer);
+        // Actor draw
+        scene.Draw(Engine::g_engine.GetRenderer());
 
-        PlayAudio(input, *audio, sounds);
+        PlayAudio(Engine::g_engine.GetInput(), *audio, sounds);
 
-        renderer.Present(); // Present the rendered content to the
-                            // screen
+        Engine::g_engine.GetRenderer().Present(); // Present the rendered content to the screen
     }
-    // SHUTDOWN
 
-    renderer.Destroy(); // Clean up the renderer and window
+    // SHUTDOWN
+    Engine::g_engine.Destroy(); // Clean up the renderer and window
 
     return 0;
 }

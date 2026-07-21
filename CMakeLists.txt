@@ -31,8 +31,10 @@ add_library(Engine STATIC
     Engine/Input.cpp
     Engine/GameTime.cpp
     Engine/Actor.cpp
-    # Engine/Player.cpp
-    )
+    Engine/Player.cpp
+        Engine/Enemy.cpp
+        Engine/Scene.cpp
+)
 
 target_include_directories(Engine PUBLIC headers/)
 target_link_libraries(Engine PUBLIC SDL3::SDL3 Fmod)

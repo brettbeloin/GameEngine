@@ -4,6 +4,8 @@
 #include "Transform.h"
 #include <iostream>
 
+#include "MathUtils.h"
+
 bool Engine::Renderer::Initialize(const Engine::Window &window) {
     // Initialization code for the renderer
     SDL_Init(SDL_INIT_VIDEO);
@@ -41,7 +43,7 @@ void Engine::Renderer::SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) const {
 }
 
 void Engine::Renderer::SetColor(float r, float g, float b, float a) const {
-    SDL_SetRenderDrawColor(m_renderer, r, g, b, a);
+    SDL_SetRenderDrawColorFloat(m_renderer, r, g, b, a);
 }
 
 void Engine::Renderer::DrawRect(float x, float y, float w, float h) const {
@@ -69,26 +71,33 @@ void Engine::Renderer::DrawLine(float x1, float y1, float x2, float y2) const {
     SDL_RenderLine(m_renderer, x1, y1, x2, y2);
 }
 
-void Engine::Renderer::DrawModel(const Model &model, const Transform &Transform) const {
-    for (auto mesh : model.GetMeshes()) {
-
-        SetColor(mesh.GetColor().r, mesh.GetColor().g, mesh.GetColor().b, 255);
-
-        const auto &points = mesh.GetPoints();
-        for (int i = 0; i + 1 < points.size(); i++) {
+void Engine::Renderer::DrawModel(const Model& model, const Transform& transform) const
+{
+    for (auto mesh : model.GetMeshes())
+    {
+        SetColor(mesh.GetColor().r, mesh.GetColor().g, mesh.GetColor().b, 1.0f);
+        auto& points = mesh.GetPoints();
+        for (int i = 0; i + 1 < points.size(); i++)
+        {
+            // local space
             Vector2 v1 = points[i];
             Vector2 v2 = points[i + 1];
 
-            v1 *= Transform.scale;
-            v2 *= Transform.scale;
+            // convert to world space
+            v1 *= transform.scale;
+            v2 *= transform.scale;
 
-            v1 += Transform.position;
-            v2 += Transform.position;
+            v1 = v1.Rotate(transform.rotation * DegToRad);
+            v2 = v2.Rotate(transform.rotation * DegToRad);
+
+            v1 += transform.position;
+            v2 += transform.position;
 
             DrawLine(v1.x, v1.y, v2.x, v2.y);
         }
     }
-};
+}
+
 
 void Engine::Renderer::Destroy() {
     if (m_renderer) {
