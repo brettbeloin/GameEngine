@@ -7,6 +7,9 @@
 #include "vector3.h"
 
 // systems
+#include <iostream>
+#include <ostream>
+
 #include "GameTime.h"
 #include "Input.h"
 #include "renderer.h"
@@ -17,7 +20,10 @@
 namespace Engine {
     class Engine {
       public:
-        Engine() = default;
+        static Engine& GetEngine() {
+            static Engine engine;
+            return engine;
+        }
 
         bool   Initialize();
         void   Destroy();
@@ -56,6 +62,9 @@ namespace Engine {
             m_window = window;
         }
 
+    private:
+        Engine() = default;
+
       private:
         Input    m_input;
         Renderer m_renderer;
@@ -65,5 +74,4 @@ namespace Engine {
         Window   m_window;
     };
 
-    extern Engine g_engine;
 } // namespace Engine

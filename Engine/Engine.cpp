@@ -2,8 +2,6 @@
 #include <iostream>
 
 namespace Engine {
-    Engine g_engine;
-
     bool   Engine::Initialize() {
         m_window = {"Game Engine", 500, 500}; // Set the window width and height
 

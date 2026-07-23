@@ -1,17 +1,19 @@
 #include "Engine.h"
-#include "Mesh.h"
 #include "fmod.hpp"
 #include "fmod_errors.h"
-#include "vector3.h"
+#include <filesystem>
 #include <iostream>
 #include <vector>
 
 #include "Enemy.h"
 #include "Player.h"
 
+#include "Assets.h"
+
 void PlayAudio(const Engine::Input &engine, FMOD::System &audio, const std::vector<FMOD::Sound *> &sounds) {
     if (engine.GetKeyPressed(SDL_SCANCODE_1)) {
         std::cout << "whistle sound\n";
+        std::cout << std::filesystem::current_path() << std::endl;
         audio.playSound(sounds[0], nullptr, false, nullptr);
     }
 
@@ -21,44 +23,44 @@ void PlayAudio(const Engine::Input &engine, FMOD::System &audio, const std::vect
         audio.playSound(sounds[1], nullptr, false, nullptr);
     }
 
+    if (engine.GetKeyPressed(SDL_SCANCODE_3)) {
+        // play another sound
+        std::cout << "snare sound\n";
+        audio.playSound(sounds[2], nullptr, false, nullptr);
+    }
+    if (engine.GetKeyPressed(SDL_SCANCODE_4)) {
+        // play another sound
+        std::cout << "snare sound\n";
+        audio.playSound(sounds[3], nullptr, false, nullptr);
+    }
+    if (engine.GetKeyPressed(SDL_SCANCODE_5)) {
+        // play another sound
+        std::cout << "snare sound\n";
+        audio.playSound(sounds[4], nullptr, false, nullptr);
+    }
+
     audio.update();
 }
 
 int main(int argc, char *argv[]) {
-    // Initalization
-    if (const bool init_success = Engine::g_engine.Initialize(); !init_success) {
+    // Initialization
+    if (const bool init_success = Engine::Engine::GetEngine().Initialize(); !init_success) {
         return -1;
     }
 
     std::cout << "Successfully initialized the renderer." << std::endl;
 
-    // mesh / model
-    const Engine::Mesh mesh{
-        {
-         {5, 0},
-         {3, -3},
-         {1, -3},
-         {-1, -2},
-         {0, -1},
-         {-2, 1},
-         {1, 1},
-         {5, 0},
-         },
-        Engine::Color{1.0, 0.0, 0.0}
-    };
-    const Engine::Model model = std::vector{mesh};
+    Engine::Scene scene;
 
-    Engine::Scene       scene;
-
-    PlayerDesc          playerDesc;
+    PlayerDesc    playerDesc;
     playerDesc.name = "player";
-    playerDesc.model = model;
+    playerDesc.model = Assets::player_model;
     playerDesc.transform = Engine::Transform{
-        Engine::Vector2{(static_cast<float>(Engine::g_engine.GetWindow().window_width) / 2),
-                        (static_cast<float>(Engine::g_engine.GetWindow().window_height) / 2)},
+        Engine::Vector2{(static_cast<float>(Engine::Engine::GetEngine().GetWindow().window_width) / 2),
+                        (static_cast<float>(Engine::Engine::GetEngine().GetWindow().window_height) / 2)},
         0, 15
     };
-    playerDesc.speed = 50.0f;
+    playerDesc.speed = 200.0f;
 
     Player *player = new Player{playerDesc};
 
@@ -67,11 +69,11 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < 5; i++) {
         EnemyDesc enemy_desc;
         enemy_desc.name = "Enemy" + std::to_string(i + 1);
-        enemy_desc.model = model;
+        enemy_desc.model = Assets::player_model;
         enemy_desc.transform = Engine::Transform{
             Engine::Vector2{
-                            Engine::RandomFloat(static_cast<float>(Engine::g_engine.GetWindow().window_width)),
-                            Engine::RandomFloat(static_cast<float>(Engine::g_engine.GetWindow().window_height)),
+                            Engine::RandomFloat(static_cast<float>(Engine::Engine::GetEngine().GetWindow().window_width)),
+                            Engine::RandomFloat(static_cast<float>(Engine::Engine::GetEngine().GetWindow().window_height)),
                             },
             90.0f, 10.0f
         };
@@ -97,6 +99,8 @@ int main(int argc, char *argv[]) {
     FMOD_RESULT                result = audio->createSound("sound/mp3/whistle.mp3", FMOD_DEFAULT, nullptr, &sound);
     if (result != FMOD_OK) {
         std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
+    } else {
+        std::cout << "Found whistle\n";
     }
 
     sounds.push_back(sound);
@@ -105,7 +109,13 @@ int main(int argc, char *argv[]) {
     if (result != FMOD_OK) {
         std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
     }
+    sounds.push_back(sound);
 
+    audio->createSound("sound/mp3/duck-toy.mp3", FMOD_DEFAULT, nullptr, &sound);
+    sounds.push_back(sound);
+    audio->createSound("sound/mp3/oof.mp3", FMOD_DEFAULT, nullptr, &sound);
+    sounds.push_back(sound);
+    audio->createSound("sound/mp3/scream.mp3", FMOD_DEFAULT, nullptr, &sound);
     sounds.push_back(sound);
 
     // MAIN LOOP
@@ -124,44 +134,45 @@ int main(int argc, char *argv[]) {
         }
 
         // Engine
-        Engine::g_engine.Update();
-        float dt = Engine::g_engine.GetTime().GetDeltaTime();
+        Engine::Engine::GetEngine().Update();
+        float dt = Engine::Engine::GetEngine().GetTime().GetDeltaTime();
 
         scene.Update(dt);
 
-        if (Engine::g_engine.GetInput().GetButtonPressed(Engine::Input::MouseButton::LEFT)) {
-            points.push_back(Engine::g_engine.GetInput().GetMousePosition());
+        if (Engine::Engine::GetEngine().GetInput().GetButtonPressed(Engine::Input::MouseButton::LEFT)) {
+            points.push_back(Engine::Engine::GetEngine().GetInput().GetMousePosition());
         }
 
-        Engine::Vector2 position = Engine::g_engine.GetInput().GetMousePosition();
-        if (Engine::g_engine.GetInput().GetButtonDown(Engine::Input::MouseButton::LEFT)) {
+        Engine::Vector2 position = Engine::Engine::GetEngine().GetInput().GetMousePosition();
+        if (Engine::Engine::GetEngine().GetInput().GetButtonDown(Engine::Input::MouseButton::LEFT)) {
             if (points.empty()) {
-                points.push_back(Engine::g_engine.GetInput().GetMousePosition());
+                points.push_back(Engine::Engine::GetEngine().GetInput().GetMousePosition());
             } else if ((position - points.back()).length() > 10) {
-                points.push_back(Engine::g_engine.GetInput().GetMousePosition());
+                points.push_back(Engine::Engine::GetEngine().GetInput().GetMousePosition());
             }
         }
 
         // Render
-        Engine::g_engine.GetRenderer().SetColor(0.f, 0.f, 0.f, 255.f); // Set draw color to black
-        Engine::g_engine.GetRenderer().Clear();                        // Clear the screen
+        Engine::Engine::GetEngine().GetRenderer().SetColor(0.f, 0.f, 0.f, 255.f); // Set draw color to black
+        Engine::Engine::GetEngine().GetRenderer().Clear();                        // Clear the screen
 
         for (int i = 0; i < static_cast<int>(points.size()) - 1; i++) {
-            Engine::g_engine.GetRenderer().SetColor(Engine::RandomFloat(256), Engine::RandomFloat(256),
-                                                    Engine::RandomFloat(256), 255);
-            Engine::g_engine.GetRenderer().DrawLine(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
+            Engine::Engine::GetEngine().GetRenderer().SetColor(Engine::RandomFloat(256), Engine::RandomFloat(256),
+                                                               Engine::RandomFloat(256), 255);
+            Engine::Engine::GetEngine().GetRenderer().DrawLine(points[i].x, points[i].y, points[i + 1].x,
+                                                               points[i + 1].y);
         }
 
         // Actor draw
-        scene.Draw(Engine::g_engine.GetRenderer());
+        scene.Draw(Engine::Engine::GetEngine().GetRenderer());
 
-        PlayAudio(Engine::g_engine.GetInput(), *audio, sounds);
+        PlayAudio(Engine::Engine::GetEngine().GetInput(), *audio, sounds);
 
-        Engine::g_engine.GetRenderer().Present(); // Present the rendered content to the screen
+        Engine::Engine::GetEngine().GetRenderer().Present(); // Present the rendered content to the screen
     }
 
     // SHUTDOWN
-    Engine::g_engine.Destroy(); // Clean up the renderer and window
+    Engine::Engine::GetEngine().Destroy(); // Clean up the renderer and window
 
     return 0;
 }

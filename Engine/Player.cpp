@@ -8,25 +8,25 @@
 void Player::Update(const float dt) {
 float thrust = 0.0f;
 
-    if (Engine::g_engine.GetInput().GetKeyDown(SDL_SCANCODE_W) ||
-        Engine::g_engine.GetInput().GetKeyDown(SDL_SCANCODE_UP)) {
+    if (Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_W) ||
+       Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_UP)) {
         thrust = m_speed;
         }
 
-    if (Engine::g_engine.GetInput().GetKeyDown(SDL_SCANCODE_S) ||
-        Engine::g_engine.GetInput().GetKeyDown(SDL_SCANCODE_DOWN)) {
+    if  (Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_S) ||
+        Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_DOWN)) {
         thrust = -m_speed;
         }
 
     float rotation = 0.0f;
 
-    if (Engine::g_engine.GetInput().GetKeyDown(SDL_SCANCODE_A) ||
-        Engine::g_engine.GetInput().GetKeyDown(SDL_SCANCODE_LEFT)) {
+    if (Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_A) ||
+        Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_LEFT)) {
         rotation = -180.0f;
     }
 
-    if (Engine::g_engine.GetInput().GetKeyDown(SDL_SCANCODE_D) ||
-        Engine::g_engine.GetInput().GetKeyDown(SDL_SCANCODE_RIGHT)) {
+    if (Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_D) ||
+        Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_RIGHT)) {
         rotation = 180.0f;
     }
 
