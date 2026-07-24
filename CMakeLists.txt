@@ -37,10 +37,10 @@ add_library(Engine STATIC
     Engine/GameTime.cpp
     Engine/Actor.cpp
     Engine/Player.cpp
-        Engine/Enemy.cpp
-        Engine/Scene.cpp
-        headers/Assets.h
-        Engine/Assets.cpp
+    Engine/Enemy.cpp
+    Engine/Scene.cpp
+    Engine/Assets.cpp
+    Engine/File.cpp
 )
 
 target_include_directories(Engine PUBLIC headers/)
@@ -63,8 +63,8 @@ if (WIN32)
 
     add_custom_command(TARGET GameEngine POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_SOURCE_DIR}/sound"
-        "$<TARGET_FILE_DIR:GameEngine>/sound"
+    "${CMAKE_SOURCE_DIR}/Assets"
+    "$<TARGET_FILE_DIR:GameEngine>/Assets"
 )
 endif()
 

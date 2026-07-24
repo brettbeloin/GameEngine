@@ -8,19 +8,19 @@
 
 // systems
 #include <iostream>
-#include <ostream>
 
 #include "GameTime.h"
 #include "Input.h"
 #include "renderer.h"
 
 #include "Actor.h"
+#include "File.h"
 #include "Scene.h"
 
 namespace Engine {
     class Engine {
       public:
-        static Engine& GetEngine() {
+        static Engine &GetEngine() {
             static Engine engine;
             return engine;
         }
@@ -62,7 +62,7 @@ namespace Engine {
             m_window = window;
         }
 
-    private:
+      private:
         Engine() = default;
 
       private:

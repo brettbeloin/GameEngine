@@ -1,14 +1,62 @@
 #include "Engine.h"
 #include "fmod.hpp"
 #include "fmod_errors.h"
-#include <filesystem>
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "Enemy.h"
 #include "Player.h"
 
 #include "Assets.h"
+
+void Text() {
+    // get current working directory
+    std::cout << "Directory Operations:\n";
+    std::cout << "Working directory: " << Engine::GetWorkingDirectory() << "\n";
+
+    // set working directory (current working directory + "Assets")
+    std::cout << "Setting directory to 'Assets'...\n";
+    Engine::SetWorkingDirectory("Assets");
+    std::cout << "New directory: " << Engine::GetWorkingDirectory() << "\n\n";
+
+    // get filenames in the working directory
+    std::cout << "Files in Directory:\n";
+    auto filenames = Engine::GetFilesInDirectory(Engine::GetWorkingDirectory());
+    for (const auto &filename : filenames) {
+        std::cout << filename << "\n";
+    }
+    std::cout << "\n";
+
+    // get filename info
+    if (!filenames.empty()) {
+        // get filename
+        std::string str = Engine::GetFilename(filenames[0]);
+        std::cout << "Filename: " << str << "\n";
+
+        // get extension
+        str = Engine::GetFileExtension(filenames[0]);
+        std::cout << "Extension: " << str << "\n";
+
+        // get filename no extension
+        str = Engine::GetFilenameNoExtension(filenames[0]);
+        std::cout << "Filename No Extension: " << str << "\n\n";
+    }
+
+    // read and display text file
+    std::cout << "Text File Reading:\n";
+    std::string str;
+    if (Engine::ReadTextFile("test.txt", str)) {
+        std::cout << str << "\n";
+    }
+
+    // write to text file
+    std::cout << "Text File Writing:\n";
+    Engine::WriteTextFile("test.txt", "Hello, World!", true);
+    if (Engine::ReadTextFile("test.txt", str)) {
+        std::cout << str << "\n";
+    }
+}
 
 void PlayAudio(const Engine::Input &engine, FMOD::System &audio, const std::vector<FMOD::Sound *> &sounds) {
     if (engine.GetKeyPressed(SDL_SCANCODE_1)) {
@@ -49,6 +97,8 @@ int main(int argc, char *argv[]) {
     }
 
     std::cout << "Successfully initialized the renderer." << std::endl;
+
+    Text();
 
     Engine::Scene scene;
 
@@ -96,26 +146,26 @@ int main(int argc, char *argv[]) {
     std::vector<FMOD::Sound *> sounds;
     FMOD::Sound               *sound = nullptr;
 
-    FMOD_RESULT                result = audio->createSound("sound/mp3/whistle.mp3", FMOD_DEFAULT, nullptr, &sound);
+    FMOD_RESULT result = audio->createSound("Assets/sound/mp3/whistle.mp3", FMOD_DEFAULT, nullptr, &sound);
     if (result != FMOD_OK) {
-        std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
+        // std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
     } else {
-        std::cout << "Found whistle\n";
+        // std::cout << "Found whistle\n";
     }
 
     sounds.push_back(sound);
 
-    result = audio->createSound("sound/wav/snare.wav", FMOD_DEFAULT, nullptr, &sound);
+    result = audio->createSound("Assets/sound/wav/snare.wav", FMOD_DEFAULT, nullptr, &sound);
     if (result != FMOD_OK) {
-        std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
+        // std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
     }
     sounds.push_back(sound);
 
-    audio->createSound("sound/mp3/duck-toy.mp3", FMOD_DEFAULT, nullptr, &sound);
+    audio->createSound("Assets/sound/mp3/duck-toy.mp3", FMOD_DEFAULT, nullptr, &sound);
     sounds.push_back(sound);
-    audio->createSound("sound/mp3/oof.mp3", FMOD_DEFAULT, nullptr, &sound);
+    audio->createSound("Assets/sound/mp3/oof.mp3", FMOD_DEFAULT, nullptr, &sound);
     sounds.push_back(sound);
-    audio->createSound("sound/mp3/scream.mp3", FMOD_DEFAULT, nullptr, &sound);
+    audio->createSound("Assets/sound/mp3/scream.mp3", FMOD_DEFAULT, nullptr, &sound);
     sounds.push_back(sound);
 
     // MAIN LOOP
