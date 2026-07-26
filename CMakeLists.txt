@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(external/SDL3)
+add_subdirectory(external/json)
 
 if (WIN32)
     # Windows
@@ -41,10 +42,15 @@ add_library(Engine STATIC
     Engine/Scene.cpp
     Engine/Assets.cpp
     Engine/File.cpp
+    Engine/DataBase.cpp
 )
 
 target_include_directories(Engine PUBLIC headers/)
-target_link_libraries(Engine PUBLIC SDL3::SDL3 Fmod)
+target_link_libraries(Engine PUBLIC
+    SDL3::SDL3
+    Fmod
+    json
+)
 
 add_executable(GameEngine)
 

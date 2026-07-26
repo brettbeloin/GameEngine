@@ -1,0 +1,22 @@
+CREATE TABLE [IF NOT EXISTS] PLAYER (
+   id INTEGER PRIMARY KEY, 
+   player_name TEXT NOT NULL,
+   player_data TEXT
+
+   CHECK (json_valid(player_data))
+)
+
+/* player_data {
+*            std::string tag;
+*           Transform   transform;
+*           Vector2     velocity;
+*           Model       model;
+*           speed       speed
+*}
+*/
+
+CREATE TABLE [IF NOT EXISTS] HIGH_SCORE (
+   id INTEGER PRIMARY KEY AUTOINCREMENT, 
+   player_name TEXT NOT NULL,
+   player_data TEXT
+)
