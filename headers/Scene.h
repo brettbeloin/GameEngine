@@ -22,6 +22,9 @@ namespace Engine {
         template<typename T>
         T* GetActorByName(const std::string& name);
 
+    private:
+        void UpdateCollisions();
+
         private:
         std::vector<Actor *> m_actors;
     };

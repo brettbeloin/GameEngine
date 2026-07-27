@@ -19,17 +19,16 @@ void Enemy::Update(const float dt) {
         AddVelocity(fowrard * dt);
     }
 
-    // float thrust = 0.0f;
-    //
-    // float rotation = 0.0f;
-    //
-    //     Engine::Vector2
-    //
-    // const Engine::Vector2 velocity = fowrard.Rotate(m_transform.rotation * Engine::DegToRad) * thrust;
-    //
-    // AddVelocity(velocity * dt);
-
     Actor::Update(dt);
+}
+
+void Enemy::OnCollison(Actor *other) {
+    std::cout << other->GetName() << std::endl;
+
+    if (other->GetTag() == "PlayerBullet") {
+        SetDestroyed();
+        other->SetDestroyed();
+    }
 }
 
 void Enemy::Draw(const Engine::Renderer &renderer) const {

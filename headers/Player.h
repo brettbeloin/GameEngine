@@ -21,6 +21,9 @@ class Player : public Engine::Actor {
 
     void Draw(const Engine::Renderer &renderer) const override;
 
+    void OnCollison(Actor *other) override;
+
+
   private:
     int   m_ammo = 0;
     float m_speed = 0.0f;

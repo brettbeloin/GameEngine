@@ -21,9 +21,14 @@ add_library(Engine STATIC
     Engine/File.cpp
     Engine/Database.cpp
     external/sqlite/sqlite3.c
+        Engine/Model.cpp
+        Engine/Mesh.cpp
 )
 
-target_include_directories(Engine PUBLIC headers/)
+target_include_directories(Engine PUBLIC
+    headers/
+    external/sqlite
+)
 target_link_libraries(Engine PUBLIC
     SDL3::SDL3
     Fmod
@@ -73,7 +78,7 @@ elseif (UNIX)
 endif()
 
 target_sources(GameEngine PRIVATE
-    Game/Game.cpp
+        Game/Main.cpp
     )
 
 target_link_libraries(GameEngine PRIVATE Engine)

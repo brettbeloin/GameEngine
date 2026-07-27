@@ -32,6 +32,8 @@ namespace Engine {
 
         virtual void Draw(const class Renderer &renderer) const;
 
+        virtual void OnCollison(Actor *other) {};
+
         Transform   &GetTransform() {
             return m_transform;
         }
@@ -72,9 +74,18 @@ namespace Engine {
             return m_scene;
         }
 
+        bool GetDestroyed() const {
+            return m_destroyed;
+        };
+
+        void SetDestroyed(bool destroyed = true) {
+            m_destroyed = destroyed;
+        }
+
         // Scene *m_scene = nullptr;
 
-        friend Engine::Scene;
+        float GetRadius() const;
+        friend Scene;
 
       protected:
         std::string m_name;
@@ -85,5 +96,7 @@ namespace Engine {
 
         Model       m_model;
         Scene      *m_scene = nullptr;
+
+        bool m_destroyed = false;
     };
 } // namespace Engine

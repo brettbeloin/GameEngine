@@ -23,6 +23,8 @@ namespace Engine {
             m_points = color;
         }
 
+        float GetRadius() const;
+
       private:
         std::vector<Vector2> m_points;
         Color                m_color = {1.0f, 1.0f, 1.0f};

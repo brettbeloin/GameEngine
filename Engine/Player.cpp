@@ -43,3 +43,9 @@ float thrust = 0.0f;
 void Player::Draw(const Engine::Renderer &renderer) const {
     Actor::Draw(renderer);
 }
+
+void Player::OnCollison(Actor *other) {
+    if (other->GetName() == "Enemy") {
+        SetDestroyed();
+    }
+}

@@ -19,6 +19,8 @@ class Enemy : public Engine::Actor {
 
     void Update(float dt) override;
 
+    void OnCollison(Actor *other) override;
+
     void Draw(const Engine::Renderer &renderer) const override;
 
     private:
