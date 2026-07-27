@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/brett/Documents/GameEngine/Build/cmake_install.cmake",
+		"/home/brett/Documents/GameEngine/Build/external/SDL3/cmake_install.cmake",
+		"/home/brett/Documents/GameEngine/Build/external/json/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

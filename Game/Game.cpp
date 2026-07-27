@@ -91,8 +91,8 @@ void PlayAudio(const Engine::Input &engine, FMOD::System &audio, const std::vect
 }
 
 void insertDummyData() {
-    std::string player = "INSERT INTO TEST_TABLE (id, player_name) VALUES (?,?)";
-    // std::string score = "INSERT INTO TEST_TABLE (player_name, score) VALUES (?,?)";
+    std::string player = "INSERT INTO TEST_PLAYER (id, player_name) VALUES (?,?)";
+    // std::string score = "INSERT INTO TEST_SCORE (player_name, score) VALUES (?,?)";
 
     Database::Database::GetDatabase().AddNewRecord(player);
     // Database::Database::GetDatabase().AddNewRecord(score);
