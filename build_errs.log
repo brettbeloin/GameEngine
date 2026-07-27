@@ -1,0 +1,13 @@
+[0/2] Re-checking globbed directories...
+[1/2] Linking CXX executable GameEngine
+FAILED: [code=1] GameEngine 
+: && /usr/bin/c++  -Wl,--dependency-file=CMakeFiles/GameEngine.dir/link.d CMakeFiles/GameEngine.dir/Game/Game.cpp.o -o GameEngine  -Wl,-rpath,/home/brett/Documents/GameEngine/build/external/SDL3:/home/brett/Documents/GameEngine/external/fmod_linux/api/core/lib/x86_64  libEngine.a  external/SDL3/libSDL3.so.0.5.0  /home/brett/Documents/GameEngine/external/fmod_linux/api/core/lib/x86_64/libfmod.so && :
+/usr/bin/ld: libEngine.a(Database.cpp.o): in function `Database::Database::Init()':
+Database.cpp:(.text+0x4a): undefined reference to `sqlite3_open'
+/usr/bin/ld: Database.cpp:(.text+0xa0): undefined reference to `sqlite3_errmsg'
+/usr/bin/ld: Database.cpp:(.text+0x195): undefined reference to `sqlite3_exec'
+/usr/bin/ld: Database.cpp:(.text+0x1f8): undefined reference to `sqlite3_free'
+/usr/bin/ld: libEngine.a(Database.cpp.o): in function `Database::Database::Destroy()':
+Database.cpp:(.text+0x2b7): undefined reference to `sqlite3_close'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.

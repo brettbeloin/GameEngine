@@ -1,4 +1,5 @@
 build/
+Data/
 
 compile_commands.json
 .idea

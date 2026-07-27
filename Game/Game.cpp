@@ -1,6 +1,6 @@
+#include "Database.h"
 #include "Engine.h"
 #include "fmod.hpp"
-#include "fmod_errors.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -90,15 +90,28 @@ void PlayAudio(const Engine::Input &engine, FMOD::System &audio, const std::vect
     audio.update();
 }
 
+void insertDummyData() {
+    std::string player = "INSERT INTO TEST_TABLE (id, player_name) VALUES (?,?)";
+    // std::string score = "INSERT INTO TEST_TABLE (player_name, score) VALUES (?,?)";
+
+    Database::Database::GetDatabase().AddNewRecord(player);
+    // Database::Database::GetDatabase().AddNewRecord(score);
+}
+
 int main(int argc, char *argv[]) {
+    bool init_success;
+
     // Initialization
-    if (const bool init_success = Engine::Engine::GetEngine().Initialize(); !init_success) {
+    if (init_success = Engine::Engine::GetEngine().Initialize(); !init_success) {
+        return -1;
+    }
+    std::cout << "Successfully initialized the renderer." << std::endl;
+
+    if (init_success = Database::Database::GetDatabase().Init(); !init_success) {
         return -1;
     }
 
-    std::cout << "Successfully initialized the renderer." << std::endl;
-
-    Text();
+    // Text();
 
     Engine::Scene scene;
 
@@ -174,12 +187,10 @@ int main(int argc, char *argv[]) {
         // UPDATE
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_EVENT_QUIT) {
+            if (event.type == SDL_EVENT_QUIT ||
+                (event.type == SDL_EVENT_KEY_DOWN && event.key.scancode == SDL_SCANCODE_ESCAPE)) {
                 quit = true;
-            }
-
-            if (event.type == SDL_EVENT_KEY_DOWN && event.key.scancode == SDL_SCANCODE_ESCAPE) {
-                quit = true;
+                insertDummyData();
             }
         }
 
@@ -222,6 +233,7 @@ int main(int argc, char *argv[]) {
     }
 
     // SHUTDOWN
+    Database::Database::GetDatabase().Destroy();
     Engine::Engine::GetEngine().Destroy(); // Clean up the renderer and window
 
     return 0;

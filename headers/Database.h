@@ -1,0 +1,57 @@
+#pragma once
+#include "sqlite3.h"
+#include "json/json.h"
+#include <string>
+
+namespace Database {
+    class Database {
+      public:
+        static Database &GetDatabase() {
+            static Database Database;
+            return Database;
+        }
+
+        bool           Init();
+        void           Destroy();
+
+        const sqlite3 *GetDB() const {
+            return m_db;
+        }
+
+        const void SetDB(sqlite3 *db) {
+            m_db = db;
+        }
+
+        const char *GetErrorMessage() const {
+            return m_errorMessage;
+        }
+
+        const void SetErrorMessage(char *msg) {
+            m_errorMessage = msg;
+        }
+
+        const int GetResult() const {
+            return m_result;
+        }
+
+        const void SetResult(const int &result) {
+            m_result = result;
+        }
+
+        // Database calls
+      public:
+        void AddNewRecord(std::string cmd);
+        void Update(std::string cmd);
+        void ReadAllData(std::string cmd);
+        void GetSingleEntry(std::string cmd);
+
+      private:
+        Database() = default;
+
+      private:
+        sqlite3    *m_db = nullptr;
+        char       *m_errorMessage = nullptr;
+        std::string m_dbPath;
+        int         m_result = 0;
+    };
+} // namespace Database
