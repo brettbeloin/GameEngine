@@ -91,11 +91,17 @@ void PlayAudio(const Engine::Input &engine, FMOD::System &audio, const std::vect
 }
 
 void insertDummyData() {
-    std::string player = "INSERT INTO TEST_PLAYER (id, player_name) VALUES (?,?)";
-    // std::string score = "INSERT INTO TEST_SCORE (player_name, score) VALUES (?,?)";
+    Database::AddParams params;
 
-    Database::Database::GetDatabase().AddNewRecord(player);
-    // Database::Database::GetDatabase().AddNewRecord(score);
+    std::string         player = "INSERT INTO TEST_PLAYER (player_name, player_data) VALUES (?,?)";
+    params.name = "Test Player";
+
+    Database::Database::GetDatabase().AddNewRecord(player, params);
+
+    std::string score = "INSERT INTO TEST_SCORE (player_name, score) VALUES (?,?)";
+    params.score = 67;
+
+    Database::Database::GetDatabase().AddNewRecord(score, params);
 }
 
 int main(int argc, char *argv[]) {

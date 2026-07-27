@@ -4,6 +4,14 @@
 #include <string>
 
 namespace Database {
+
+    struct AddParams {
+        int         id;
+        int         score;
+        std::string name;
+        std::string json_values;
+    };
+
     class Database {
       public:
         static Database &GetDatabase() {
@@ -40,7 +48,7 @@ namespace Database {
 
         // Database calls
       public:
-        void AddNewRecord(std::string cmd);
+        void AddNewRecord(std::string cmd, AddParams params);
         void Update(std::string cmd);
         void ReadAllData(std::string cmd);
         void GetSingleEntry(std::string cmd);

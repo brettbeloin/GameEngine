@@ -44,7 +44,7 @@ namespace Database {
         sqlite3_close(this->m_db);
     }
 
-    void Database::AddNewRecord(std::string cmd) {
+    void Database::AddNewRecord(std::string cmd, AddParams params) {
         sqlite3_stmt *stmt;
 
         this->m_result = sqlite3_prepare_v2(this->m_db, cmd.c_str(), -1, &stmt, nullptr);
@@ -53,7 +53,12 @@ namespace Database {
             return;
         }
 
-        sqlite3_bind_text(stmt, 2, "Test Player", -1, SQLITE_STATIC);
+        sqlite3_bind_int(stmt, 1, params.id);
+        sqlite3_bind_int(stmt, 1, params.score);
+
+        sqlite3_bind_text(stmt, 2, params.name.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 3, params.json_values.c_str(), -1, SQLITE_STATIC);
+
         checkError(sqlite3_step(stmt), this->m_db, "Failed to step insert");
 
         sqlite3_finalize(stmt); // Clean up statement
