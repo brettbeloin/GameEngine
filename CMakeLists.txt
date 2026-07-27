@@ -20,9 +20,11 @@ add_library(Engine STATIC
     Engine/Assets.cpp
     Engine/File.cpp
     Engine/Database.cpp
+    Engine/Model.cpp
+    Engine/Mesh.cpp
+    Engine/Audio.cpp
+
     external/sqlite/sqlite3.c
-        Engine/Model.cpp
-        Engine/Mesh.cpp
 )
 
 target_include_directories(Engine PUBLIC

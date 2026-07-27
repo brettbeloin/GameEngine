@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
 
 #include "Enemy.h"
 #include "Player.h"
@@ -59,36 +58,10 @@ void Text() {
     }
 }
 
-void PlayAudio(const Engine::Input &engine, FMOD::System &audio, const std::vector<FMOD::Sound *> &sounds) {
-    if (engine.GetKeyPressed(SDL_SCANCODE_1)) {
-        std::cout << "whistle sound\n";
-        std::cout << std::filesystem::current_path() << std::endl;
-        audio.playSound(sounds[0], nullptr, false, nullptr);
+void PlayAudio() {
+    if (Engine::Engine::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_1)) {
+        Engine::Engine::GetEngine().GetAudio().PlaySound("sound");
     }
-
-    if (engine.GetKeyPressed(SDL_SCANCODE_2)) {
-        // play another sound
-        std::cout << "snare sound\n";
-        audio.playSound(sounds[1], nullptr, false, nullptr);
-    }
-
-    if (engine.GetKeyPressed(SDL_SCANCODE_3)) {
-        // play another sound
-        std::cout << "snare sound\n";
-        audio.playSound(sounds[2], nullptr, false, nullptr);
-    }
-    if (engine.GetKeyPressed(SDL_SCANCODE_4)) {
-        // play another sound
-        std::cout << "snare sound\n";
-        audio.playSound(sounds[3], nullptr, false, nullptr);
-    }
-    if (engine.GetKeyPressed(SDL_SCANCODE_5)) {
-        // play another sound
-        std::cout << "snare sound\n";
-        audio.playSound(sounds[4], nullptr, false, nullptr);
-    }
-
-    audio.update();
 }
 
 void insertDummyData() {
@@ -106,6 +79,7 @@ void insertDummyData() {
 }
 
 int main(int argc, char *argv[]) {
+
     bool init_success;
 
     // Initialization
@@ -117,6 +91,9 @@ int main(int argc, char *argv[]) {
     if (init_success = Database::Database::GetDatabase().Init(); !init_success) {
         return -1;
     }
+
+    // create audio system
+    Engine::Engine::GetEngine().GetAudio().AddSound("sound", "Assests/sound/wav/bass.wav");
 
     // Text();
 
@@ -156,37 +133,6 @@ int main(int argc, char *argv[]) {
 
     // Photoshop
     std::vector<Engine::Vector2> points;
-
-    // create audio system
-    FMOD::System *audio;
-    FMOD::System_Create(&audio);
-    void *extra_driver_data = nullptr;
-    audio->init(32, FMOD_INIT_NORMAL, extra_driver_data);
-
-    std::vector<FMOD::Sound *> sounds;
-    FMOD::Sound               *sound = nullptr;
-
-    FMOD_RESULT result = audio->createSound("Assets/sound/mp3/whistle.mp3", FMOD_DEFAULT, nullptr, &sound);
-    if (result != FMOD_OK) {
-        // std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
-    } else {
-        // std::cout << "Found whistle\n";
-    }
-
-    sounds.push_back(sound);
-
-    result = audio->createSound("Assets/sound/wav/snare.wav", FMOD_DEFAULT, nullptr, &sound);
-    if (result != FMOD_OK) {
-        // std::cerr << "createSound failed: " << FMOD_ErrorString(result) << std::endl;
-    }
-    sounds.push_back(sound);
-
-    audio->createSound("Assets/sound/mp3/duck-toy.mp3", FMOD_DEFAULT, nullptr, &sound);
-    sounds.push_back(sound);
-    audio->createSound("Assets/sound/mp3/oof.mp3", FMOD_DEFAULT, nullptr, &sound);
-    sounds.push_back(sound);
-    audio->createSound("Assets/sound/mp3/scream.mp3", FMOD_DEFAULT, nullptr, &sound);
-    sounds.push_back(sound);
 
     // MAIN LOOP
     bool quit = false;
@@ -234,7 +180,7 @@ int main(int argc, char *argv[]) {
         // Actor draw
         scene.Draw(Engine::Engine::GetEngine().GetRenderer());
 
-        PlayAudio(Engine::Engine::GetEngine().GetInput(), *audio, sounds);
+        PlayAudio();
 
         Engine::Engine::GetEngine().GetRenderer().Present(); // Present the rendered content to the screen
     }

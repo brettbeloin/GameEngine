@@ -14,6 +14,7 @@
 #include "renderer.h"
 
 #include "Actor.h"
+#include "Audio.h"
 #include "File.h"
 #include "Scene.h"
 
@@ -62,6 +63,10 @@ namespace Engine {
             m_window = window;
         }
 
+        Audio &GetAudio() {
+            return m_audio;
+        }
+
       private:
         Engine() = default;
 
@@ -72,6 +77,7 @@ namespace Engine {
         Time     m_time;
 
         Window   m_window;
+        Audio    m_audio;
     };
 
 } // namespace Engine

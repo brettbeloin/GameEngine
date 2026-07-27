@@ -1,0 +1,91 @@
+#include "Audio.h"
+#include <fmod.hpp>
+#include <fmod_common.h>
+#include <iostream>
+#include <ostream>
+#include <string>
+
+namespace Engine {
+    void Debug(std::string err) {
+        std::cout << "[DEBUG] " << err << std::endl;
+    }
+
+    bool Audio::Initialize() {
+        FMOD_RESULT result = FMOD::System_Create(&m_fmodSystem);
+        if (!CheckFMODResult(result))
+            return false;
+
+        void *extradriverdata = nullptr;
+        result = m_fmodSystem->init(32, FMOD_INIT_NORMAL, extradriverdata);
+        if (!CheckFMODResult(result))
+            return false;
+
+        return true;
+    }
+
+    void Audio::Shutdown() {
+        CheckFMODResult(m_fmodSystem->release());
+    }
+
+    void Audio::Update() {
+        CheckFMODResult(m_fmodSystem->update());
+    }
+
+    bool Audio::AddSound(const std::string &name, const std::string &filename) {
+        // check if key exists in sounds map
+        // Debug("Hello from AddSound");
+        Debug("There are " + std::to_string(m_sounds.size()) + " Elements before check");
+
+        if (m_sounds.contains(name)) {
+            std::cerr << "Audio System : name already exists " << name << std::endl;
+            return false;
+        }
+
+        // create sound from key
+        FMOD::Sound *sound = nullptr;
+        std::cout << "AddSound: " << name << " -> " << filename << std::endl;
+        FMOD_RESULT result = m_fmodSystem->createSound(filename.c_str(), FMOD_DEFAULT, nullptr,
+                                                       &sound /*TODO: pass parameters to create sound*/);
+        if (!CheckFMODResult(result))
+            return false;
+        std::cout << "Sound loaded: " << sound << std::endl;
+
+        // insert sound into map
+        // TODO: add sound to m_sounds using name as key
+        m_sounds.insert({name, sound});
+
+        Debug("There are " + std::to_string(m_sounds.size()) + " Elements after check");
+        for (const auto &s : m_sounds) {
+            std::cout << "The elements of the map are: " << s.first << std::endl;
+        }
+
+        return true;
+    }
+
+    bool Audio::PlaySound(const std::string &name) {
+        // check if sound exists in sounds map
+        Debug("Hello from PlaySound");
+
+        if (!m_sounds.contains(name)) {
+            std::cerr << "Audio System : name doesn't exists " << name << std::endl;
+            return false;
+        }
+
+        // play sound from key
+        std::cout << "[Debug] Sound is: " << m_sounds.at(name) << std::endl;
+        FMOD_RESULT result = m_fmodSystem->playSound(m_sounds.at(name), nullptr, false, nullptr);
+        if (!CheckFMODResult(result))
+            return false;
+
+        return true;
+    }
+
+    bool Audio::CheckFMODResult(FMOD_RESULT result) {
+        if (result != FMOD_OK) {
+            std::cerr << FMOD_ErrorString(result) << std::endl;
+            return false;
+        }
+
+        return true;
+    }
+} // namespace Engine

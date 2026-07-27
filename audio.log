@@ -1,0 +1,16 @@
+Initialized
+Successfully initialized the renderer.
+Database opened successfully.
+Database schema initialized successfully.
+[DEBUG] There are 0 Elements before check
+AddSound: sound -> Assests/sound/wav/bass.wav
+Sound loaded: 0x272a03e8
+[DEBUG] There are 1 Elements after check
+The elements of the map are: sound
+[DEBUG] Hello from PlaySound
+[Debug] Sound is: 0x272a03e8
+[DEBUG] Hello from PlaySound
+[Debug] Sound is: 0x272a03e8
+[DEBUG] Hello from PlaySound
+[Debug] Sound is: 0x272a03e8
+Error: Failed to step insert -> CHECK constraint failed: json_valid(player_data)
