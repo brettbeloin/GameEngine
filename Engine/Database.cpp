@@ -3,7 +3,6 @@
 #include <iostream>
 
 namespace Database {
-
     bool checkError(int rc, sqlite3 *db, const std::string &message) {
         if (rc != SQLITE_OK && rc != SQLITE_DONE && rc != SQLITE_ROW) {
             std::cerr << "Error: " << message << " -> " << sqlite3_errmsg(db) << std::endl;
@@ -31,8 +30,6 @@ namespace Database {
 
         this->m_result = sqlite3_exec(this->m_db, str.c_str(), nullptr, nullptr, &this->m_errorMessage);
 
-        std::cout << str.c_str() << std::endl;
-
         if (this->m_result != SQLITE_OK) {
             std::cerr << "SQL error during initialization: " << this->m_errorMessage << std::endl;
             sqlite3_free(this->m_errorMessage); // Free allocated memory for error message
@@ -56,8 +53,8 @@ namespace Database {
             return;
         }
 
-        sqlite3_bind_int(stmt, 0, 1);
-        sqlite3_bind_text(stmt, 1, "Test Player", -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 2, "Test Player", -1, SQLITE_STATIC);
+        checkError(sqlite3_step(stmt), this->m_db, "Failed to step insert");
 
         sqlite3_finalize(stmt); // Clean up statement
     }
