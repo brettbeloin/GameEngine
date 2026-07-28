@@ -7,4 +7,6 @@
 
 namespace Assets {
     extern Engine::Model player_model;
-}
+    extern Engine::Model enemy_model;
+    extern Engine::Model bullet_model;
+} // namespace Assets

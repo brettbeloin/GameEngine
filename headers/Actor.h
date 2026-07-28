@@ -16,6 +16,8 @@ namespace Engine {
             std::string tag;
             Transform   transform;
             Vector2     velocity;
+            float       damping = 0.0f;
+            float       lifeSpawn = 0;
             Model       model;
         };
 
@@ -24,8 +26,11 @@ namespace Engine {
 
         explicit Actor(const ActorDesc &actor_desc)
             : m_name{actor_desc.name}, m_tag{actor_desc.tag}, m_transform{actor_desc.transform},
-              m_velocity{actor_desc.velocity}, m_model{actor_desc.model} {};
+              m_velocity{actor_desc.velocity}, m_damping{actor_desc.damping}, m_lifeSpawn{actor_desc.lifeSpawn},
+              m_model{actor_desc.model} {};
+
         explicit Actor(const Transform &transform) : m_transform{transform} {};
+
         explicit Actor(const Transform &transform, const Model &model) : m_transform{transform}, m_model{model} {};
 
         virtual void Update(float dt);
@@ -85,6 +90,23 @@ namespace Engine {
         // Scene *m_scene = nullptr;
 
         float GetRadius() const;
+
+        float GetDamping() const {
+            return m_damping;
+        }
+
+        void SetDamping(const float damping) {
+            m_damping = damping;
+        }
+
+        float GetLifeSpawn() const {
+            return m_lifeSpawn;
+        }
+
+        void SetLifeSpawn(const float lifeSpawn) {
+            m_lifeSpawn = lifeSpawn;
+        }
+
         friend Scene;
 
       protected:
@@ -93,10 +115,13 @@ namespace Engine {
 
         Transform   m_transform;
         Vector2     m_velocity{0, 0};
+        float       m_damping{0.0f};
+        float       m_lifeSpawn{0};
+        bool        isDestroyed = false;
 
         Model       m_model;
         Scene      *m_scene = nullptr;
 
-        bool m_destroyed = false;
+        bool        m_destroyed = false;
     };
 } // namespace Engine

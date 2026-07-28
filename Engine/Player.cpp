@@ -2,21 +2,23 @@
 // Created by brett on 7/20/26.
 //
 #include "Player.h"
+#include "Assets.h"
+#include "Bullet.h"
 #include "Engine.h"
-#include "renderer.h"
 
 void Player::Update(const float dt) {
-float thrust = 0.0f;
+    // Movement
 
+    float thrust = 0.0f;
     if (Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_W) ||
-       Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_UP)) {
+        Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_UP)) {
         thrust = m_speed;
-        }
+    }
 
-    if  (Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_S) ||
+    if (Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_S) ||
         Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_DOWN)) {
         thrust = -m_speed;
-        }
+    }
 
     float rotation = 0.0f;
 
@@ -27,7 +29,7 @@ float thrust = 0.0f;
 
     if (Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_D) ||
         Engine::Engine::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_RIGHT)) {
-        rotation = 180.0f;
+        rotation = +180.0f;
     }
 
     SetRotation(m_transform.rotation + rotation * dt);
@@ -37,11 +39,23 @@ float thrust = 0.0f;
 
     AddVelocity(velocity * dt);
 
-    Actor::Update(dt);
-}
+    // fire
 
-void Player::Draw(const Engine::Renderer &renderer) const {
-    Actor::Draw(renderer);
+    if (Engine::Engine::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
+        BulletDesc bullet_desc;
+        bullet_desc.name = "Bullet";
+        bullet_desc.tag = "Bullet";
+        bullet_desc.model = Assets::bullet_model;
+        bullet_desc.transform = m_transform;
+        // bullet_desc.damping = 10.0f;
+        bullet_desc.speed = 400.0f;
+        bullet_desc.lifeSpawn = 1.0f;
+
+        Bullet *bullet = new Bullet{bullet_desc};
+        m_scene->AddActor(bullet);
+    }
+
+    Actor::Update(dt);
 }
 
 void Player::OnCollison(Actor *other) {

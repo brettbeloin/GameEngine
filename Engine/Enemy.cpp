@@ -23,14 +23,8 @@ void Enemy::Update(const float dt) {
 }
 
 void Enemy::OnCollison(Actor *other) {
-    std::cout << other->GetName() << std::endl;
-
-    if (other->GetTag() == "PlayerBullet") {
+    if (other->GetTag() == "Enemy") {
         SetDestroyed();
         other->SetDestroyed();
     }
-}
-
-void Enemy::Draw(const Engine::Renderer &renderer) const {
-    Actor::Draw(renderer);
 }

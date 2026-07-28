@@ -6,13 +6,21 @@
 
 void Engine::Scene::AddActor(Actor *actor) {
     actor->m_scene = this;
-    m_actors.push_back(actor);
+    m_pendingActors.push_back(actor);
 };
 
 void Engine::Scene::Update(float dt) {
+    // update actor
     for (auto actor : m_actors) {
         actor->Update(dt);
     }
+
+    // remove destroyed
+    std::erase_if(m_actors, [](auto actor) { return actor->m_destroyed; });
+
+    // add pending actors
+    m_actors.insert(m_actors.end(), m_pendingActors.begin(), m_pendingActors.end());
+    m_pendingActors.clear();
 
     // update collision
     UpdateCollisions();
@@ -25,8 +33,8 @@ void Engine::Scene::Draw(const Renderer &renderer) const {
 }
 
 void Engine::Scene::UpdateCollisions() {
-    for (const auto& actorA : m_actors) {
-        for (const auto& actorB : m_actors) {
+    for (const auto &actorA : m_actors) {
+        for (const auto &actorB : m_actors) {
             if (actorA == actorB || actorA->GetDestroyed() || actorB->GetDestroyed()) {
                 continue;
             }

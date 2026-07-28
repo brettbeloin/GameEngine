@@ -1,6 +1,5 @@
 #include "Database.h"
 #include "Engine.h"
-#include "fmod.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,6 +8,15 @@
 #include "Player.h"
 
 #include "Assets.h"
+#include "random.h"
+
+/*
+ * TODO Fix the enemy's spawning and leaving off screen
+ * TODO Make the enemy's rotate and chase the player
+ * TODO Fix the player rotation speed
+ * TODO Fix the player model from squishing when rotating
+ * TODO Fix where Bullet shoots from
+ */
 
 void Text() {
     // get current working directory
@@ -65,17 +73,15 @@ void PlayAudio() {
 }
 
 void insertDummyData() {
-    Database::AddParams params;
+    Database::AddParams params{2, 67, "Test Player", "Player"};
+    Database::Database::GetDatabase().ToJSON(params);
 
-    std::string         player = "INSERT INTO TEST_PLAYER (player_name, player_data) VALUES (?,?)";
-    params.name = "Test Player";
+    std::string player = "INSERT INTO PLAYER (id, player_name, player_data) VALUES (?, ?,?)";
+    Database::Database::GetDatabase().InsertPlayer(player, params);
 
-    Database::Database::GetDatabase().AddNewRecord(player, params);
+    std::string score = "INSERT INTO HIGH_SCORE (player_name, score) VALUES (?,?)";
 
-    std::string score = "INSERT INTO TEST_SCORE (player_name, score) VALUES (?,?)";
-    params.score = 67;
-
-    Database::Database::GetDatabase().AddNewRecord(score, params);
+    Database::Database::GetDatabase().InsertScore(score, params);
 }
 
 int main(int argc, char *argv[]) {
@@ -87,10 +93,6 @@ int main(int argc, char *argv[]) {
         return -1;
     }
     std::cout << "Successfully initialized the renderer." << std::endl;
-
-    if (init_success = Database::Database::GetDatabase().Init(); !init_success) {
-        return -1;
-    }
 
     // create audio system
     Engine::Engine::GetEngine().GetAudio().AddSound("sound", "Assests/sound/wav/bass.wav");
@@ -107,6 +109,7 @@ int main(int argc, char *argv[]) {
                         (static_cast<float>(Engine::Engine::GetEngine().GetWindow().window_height) / 2)},
         0, 15
     };
+    playerDesc.damping = 10.0f;
     playerDesc.speed = 200.0f;
 
     Player *player = new Player{playerDesc};
@@ -116,7 +119,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < 5; i++) {
         EnemyDesc enemy_desc;
         enemy_desc.name = "Enemy" + std::to_string(i + 1);
-        enemy_desc.model = Assets::player_model;
+        enemy_desc.model = Assets::enemy_model;
         enemy_desc.transform = Engine::Transform{
             Engine::Vector2{
                             Engine::RandomFloat(static_cast<float>(Engine::Engine::GetEngine().GetWindow().window_width)),
@@ -124,7 +127,8 @@ int main(int argc, char *argv[]) {
                             },
             90.0f, 10.0f
         };
-        enemy_desc.speed = 50.0f;
+        enemy_desc.damping = 10.0f;
+        enemy_desc.speed = Engine::RandomFloat(1000.0f, 2000.0f);
 
         Enemy *enemy = new Enemy{enemy_desc};
 
@@ -186,7 +190,6 @@ int main(int argc, char *argv[]) {
     }
 
     // SHUTDOWN
-    Database::Database::GetDatabase().Destroy();
     Engine::Engine::GetEngine().Destroy(); // Clean up the renderer and window
 
     return 0;

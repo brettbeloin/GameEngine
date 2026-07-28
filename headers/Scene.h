@@ -3,36 +3,35 @@
 //
 
 #pragma once
+#include "Actor.h"
 #include <string>
 #include <vector>
-#include "Actor.h"
 
 namespace Engine {
     class Actor;
 
     class Scene {
-        public:
+      public:
         Scene() = default;
 
-        void AddActor(Actor* actor);
+        void                     AddActor(Actor *actor);
 
-        void Update(float dt);
-        void Draw(const class Renderer& renderer) const;
+        void                     Update(float dt);
+        void                     Draw(const class Renderer &renderer) const;
 
-        template<typename T>
-        T* GetActorByName(const std::string& name);
+        template <typename T> T *GetActorByName(const std::string &name);
 
-    private:
+      private:
         void UpdateCollisions();
 
-        private:
+      private:
         std::vector<Actor *> m_actors;
+        std::vector<Actor *> m_pendingActors;
     };
 
-    template<typename T = Actor>
-    T * Scene::GetActorByName(const std::string &name) {
-        for (Actor* actor : m_actors) {
-            T* actor_t = dynamic_cast<T*>(actor);
+    template <typename T = Actor> T *Scene::GetActorByName(const std::string &name) {
+        for (Actor *actor : m_actors) {
+            T *actor_t = dynamic_cast<T *>(actor);
 
             if (actor_t && actor_t->m_name == name) {
                 return actor_t;
@@ -41,4 +40,4 @@ namespace Engine {
 
         return nullptr;
     }
-}
+} // namespace Engine

@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "Database.h"
 #include <iostream>
 
 namespace Engine {
@@ -15,11 +16,14 @@ namespace Engine {
             return false;
         }
 
+        if (!Database::Database::GetDatabase().Init()) {
+            std::cerr << "Failed to initialize input." << std::endl;
+            return false;
+        }
+
         if (!m_audio.Initialize()) {
             std::cerr << "Failed to initialize input." << std::endl;
             return false;
-        } else {
-            std::cout << "Initialized\n";
         }
 
         return true;
@@ -28,6 +32,7 @@ namespace Engine {
     void Engine::Destroy() {
         m_input.Destroy();
         m_audio.Shutdown();
+        Database::Database::GetDatabase().Destroy();
         m_renderer.Destroy();
     }
 

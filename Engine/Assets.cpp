@@ -10,19 +10,43 @@ namespace Assets {
     // mesh / model
     const Mesh player_mesh{
         {
-         {-6.6, -8.05},
-         {-5.3, -5.6},
-         {-6.9, -4},
-         {-0.1, -4.1},
-         {-6.4, -8.1},
+         {2, 0},
+         {-2, 2},
+         {-1, 0},
+         {-2, -2},
+         {2, 0},
          },
         Color{1.0, 0.0, 0.0}
     };
 
-    const Mesh mesh2 = {
-        {{0, -4}, {0, -1}, {4, -2}, {4, -5}, {0, -4}},
-        Color{0.0, 1.0, 0.0}
+    const Mesh enemy_mesh{
+        {
+         {-2, -6},
+         {2, -6},
+         {3, -4},
+         {3, -1},
+         {2, 1},
+         {-2, 1},
+         {-3, -1},
+         {-3, -4},
+         {-2, -6},
+         },
+        Color{0.4, 0.3, 0.1}
     };
 
-    Model player_model = std::vector{player_mesh, mesh2};
+    const Mesh bullet_mesh = {
+        {
+         {-2, -6},
+         {-2, -4},
+         {0, -5},
+         {-2, -6},
+         },
+        Color{     0.0, 1.0, 0.0 }
+    };
+
+    Model player_model = std::vector{player_mesh};
+
+    Model enemy_model = std::vector{enemy_mesh};
+
+    Model bullet_model = std::vector{bullet_mesh};
 } // namespace Assets
