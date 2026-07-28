@@ -1,5 +1,6 @@
 #pragma once
 #include "SDL3/SDL.h"
+#include "SDL3_ttf/SDL_ttf.h"
 #include "pch.h"
 
 namespace Engine {
@@ -37,6 +38,7 @@ namespace Engine {
             return m_height;
         }
 
+    friend class Text;
     private:
         SDL_Window   *m_window = nullptr;   // Pointer to the SDL window
         SDL_Renderer *m_renderer = nullptr; // Pointer to the SDL renderer

@@ -18,7 +18,7 @@ namespace Engine {
         }
 
         float TicksToSeconds(uint64_t ticks) {
-            return static_cast<float>(ticks) / 100'000'000;
+            return static_cast<float>(ticks) / 1'000'000'000.0f;
         }
 
       private:

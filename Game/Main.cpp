@@ -5,72 +5,17 @@
 #include <vector>
 
 #include "Enemy.h"
-#include "Player.h"
 
 #include "Assets.h"
+#include "Player.h"
+#include "SpaceGame.h"
 #include "random.h"
 
 /*
- * TODO Fix the enemy's spawning and leaving off screen
  * TODO Make the enemy's rotate and chase the player
- * TODO Fix the player rotation speed
- * TODO Fix the player model from squishing when rotating
- * TODO Fix where Bullet shoots from
+ * TODO Fix Enemy from floating to edge of screen
+ * TODO Destroy enemies
  */
-
-void Text() {
-    // get current working directory
-    std::cout << "Directory Operations:\n";
-    std::cout << "Working directory: " << Engine::GetWorkingDirectory() << "\n";
-
-    // set working directory (current working directory + "Assets")
-    std::cout << "Setting directory to 'Assets'...\n";
-    Engine::SetWorkingDirectory("Assets");
-    std::cout << "New directory: " << Engine::GetWorkingDirectory() << "\n\n";
-
-    // get filenames in the working directory
-    std::cout << "Files in Directory:\n";
-    auto filenames = Engine::GetFilesInDirectory(Engine::GetWorkingDirectory());
-    for (const auto &filename : filenames) {
-        std::cout << filename << "\n";
-    }
-    std::cout << "\n";
-
-    // get filename info
-    if (!filenames.empty()) {
-        // get filename
-        std::string str = Engine::GetFilename(filenames[0]);
-        std::cout << "Filename: " << str << "\n";
-
-        // get extension
-        str = Engine::GetFileExtension(filenames[0]);
-        std::cout << "Extension: " << str << "\n";
-
-        // get filename no extension
-        str = Engine::GetFilenameNoExtension(filenames[0]);
-        std::cout << "Filename No Extension: " << str << "\n\n";
-    }
-
-    // read and display text file
-    std::cout << "Text File Reading:\n";
-    std::string str;
-    if (Engine::ReadTextFile("test.txt", str)) {
-        std::cout << str << "\n";
-    }
-
-    // write to text file
-    std::cout << "Text File Writing:\n";
-    Engine::WriteTextFile("test.txt", "Hello, World!", true);
-    if (Engine::ReadTextFile("test.txt", str)) {
-        std::cout << str << "\n";
-    }
-}
-
-void PlayAudio() {
-    if (Engine::Engine::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_1)) {
-        Engine::Engine::GetEngine().GetAudio().PlaySound("sound");
-    }
-}
 
 void insertDummyData() {
     Database::AddParams params{2, 67, "Test Player", "Player"};
@@ -85,7 +30,6 @@ void insertDummyData() {
 }
 
 int main(int argc, char *argv[]) {
-
     bool init_success;
 
     // Initialization
@@ -97,7 +41,15 @@ int main(int argc, char *argv[]) {
     // create audio system
     Engine::Engine::GetEngine().GetAudio().AddSound("sound", "Assests/sound/wav/bass.wav");
 
+    SpaceGame game;
+    game.Initialize();
+
     // Text();
+    Engine::Font *font = new Engine::Font();
+    font->Load("Assests/Fonts/8bitOperatorPlus8-Regular.ttf", 20);
+
+    Engine::Text *text = new Engine::Text(font);
+    text->Create(Engine::Engine::GetEngine().GetRenderer(), "Hello World", Engine::Color{1.0f, 1.0f, 1.0f});
 
     Engine::Scene scene;
 
@@ -109,8 +61,8 @@ int main(int argc, char *argv[]) {
                         (static_cast<float>(Engine::Engine::GetEngine().GetWindow().window_height) / 2)},
         0, 15
     };
-    playerDesc.damping = 10.0f;
-    playerDesc.speed = 200.0f;
+    playerDesc.damping = 1.0f;
+    playerDesc.speed = 500.0f;
 
     Player *player = new Player{playerDesc};
 
@@ -147,7 +99,7 @@ int main(int argc, char *argv[]) {
             if (event.type == SDL_EVENT_QUIT ||
                 (event.type == SDL_EVENT_KEY_DOWN && event.key.scancode == SDL_SCANCODE_ESCAPE)) {
                 quit = true;
-                insertDummyData();
+                // insertDummyData();
             }
         }
 
@@ -183,8 +135,7 @@ int main(int argc, char *argv[]) {
 
         // Actor draw
         scene.Draw(Engine::Engine::GetEngine().GetRenderer());
-
-        PlayAudio();
+        text->Draw(Engine::Engine::GetEngine().GetRenderer(), 40.0f, 40.0f);
 
         Engine::Engine::GetEngine().GetRenderer().Present(); // Present the rendered content to the screen
     }

@@ -32,19 +32,18 @@ void Player::Update(const float dt) {
         rotation = +180.0f;
     }
 
-    SetRotation(m_transform.rotation + rotation * dt);
+    SetRotation(m_transform.rotation + (rotation * dt));
 
     const Engine::Vector2 fowrard{1, 0}; // ->
     const Engine::Vector2 velocity = fowrard.Rotate(m_transform.rotation * Engine::DegToRad) * thrust;
 
-    AddVelocity(velocity * dt);
+    AddVelocity(velocity);
 
     // fire
-
     if (Engine::Engine::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
         BulletDesc bullet_desc;
         bullet_desc.name = "Bullet";
-        bullet_desc.tag = "Bullet";
+        bullet_desc.tag = "PlayerBullet";
         bullet_desc.model = Assets::bullet_model;
         bullet_desc.transform = m_transform;
         // bullet_desc.damping = 10.0f;

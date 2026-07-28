@@ -7,6 +7,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(external/SDL3)
 add_subdirectory(external/json)
+add_subdirectory(external/fonts)
 
 add_library(Engine STATIC
     Engine/Engine.cpp
@@ -24,6 +25,10 @@ add_library(Engine STATIC
     Engine/Mesh.cpp
     Engine/Audio.cpp
     Engine/Bullet.cpp
+    Engine/Font.cpp
+    Engine/Text.cpp
+    Engine/Game.cpp
+    Engine/SpaceGame.cpp
 
     external/sqlite/sqlite3.c
 )
@@ -34,6 +39,7 @@ target_include_directories(Engine PUBLIC
 )
 target_link_libraries(Engine PUBLIC
     SDL3::SDL3
+    SDL3_ttf::SDL3_ttf
     Fmod
     nlohmann_json::nlohmann_json
 

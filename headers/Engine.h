@@ -12,6 +12,7 @@
 #include "GameTime.h"
 #include "Input.h"
 #include "renderer.h"
+#include "Text.h"
 
 #include "Actor.h"
 #include "Audio.h"

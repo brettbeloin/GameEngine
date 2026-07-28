@@ -137,7 +137,7 @@ namespace Engine {
             Vector2 v;
 
            v.x  = this->x * std::cos(radians) - this->y * std::sin(radians);
-            v.y = this->x * std::sin(radians) - this->y * std::cos(radians);
+            v.y = this->x * std::sin(radians) + this->y * std::cos(radians);
 
             return v;
         }

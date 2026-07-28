@@ -10,6 +10,11 @@ bool Engine::Renderer::Initialize(const Engine::Window &window) {
     // Initialization code for the renderer
     SDL_Init(SDL_INIT_VIDEO);
 
+    if (!TTF_Init()) {
+        std::cerr << "TTF_Init Error: " << SDL_GetError() << std::endl;
+        return false;
+    }
+
     m_window = SDL_CreateWindow(window.window_title, window.window_width, window.window_height, 0);
     if (m_window == nullptr) {
         std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
@@ -100,6 +105,7 @@ void Engine::Renderer::DrawModel(const Model& model, const Transform& transform)
 
 
 void Engine::Renderer::Destroy() {
+    TTF_Quit();
     if (m_renderer) {
         SDL_DestroyRenderer(m_renderer);
         m_renderer = nullptr;

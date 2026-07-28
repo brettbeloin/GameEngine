@@ -51,7 +51,7 @@ namespace Engine {
             m_transform.scale = scale;
         }
 
-        void SetRotation(const float rotation) {
+    void SetRotation(const float rotation) {
             m_transform.rotation = rotation;
         }
 
