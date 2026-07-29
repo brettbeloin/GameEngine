@@ -1,6 +1,9 @@
 #include "Database.h"
+#include "Engine.h"
 #include "File.h"
+#include "Text.h"
 #include <iostream>
+#include <string>
 
 namespace Database {
     bool checkError(int rc, sqlite3 *db, const std::string &message) {
@@ -41,15 +44,19 @@ namespace Database {
     }
 
     void Database::Destroy() {
-        sqlite3_close(this->m_db);
+        if (checkError(sqlite3_close(m_db), m_db, "Failed to Destroy database")) {
+            return;
+        }
     }
 
-    void Database::InsertPlayer(std::string cmd, AddParams params) {
+    void Database::InsertPlayer(AddParams params) {
         sqlite3_stmt *stmt;
 
-        this->m_result = sqlite3_prepare_v2(this->m_db, cmd.c_str(), -1, &stmt, nullptr);
+        m_cmd = "INSERT INTO PLAYER (id, player_name, player_data) VALUES (?,?,?) ON CONFLICT(id) DO NOTHING;";
 
-        if (!checkError(this->m_result, this->m_db, "Failed to insert Item")) {
+        m_result = sqlite3_prepare_v2(m_db, m_cmd.c_str(), -1, &stmt, nullptr);
+
+        if (!checkError(m_result, m_db, "Failed to insert Player")) {
             return;
         }
 
@@ -57,24 +64,25 @@ namespace Database {
         sqlite3_bind_text(stmt, 2, params.name.c_str(), -1, SQLITE_STATIC);
         sqlite3_bind_text(stmt, 3, params.json_values.c_str(), -1, SQLITE_STATIC);
 
-        checkError(sqlite3_step(stmt), this->m_db, "Failed to step insert");
+        checkError(sqlite3_step(stmt), m_db, "Failed to step insert");
 
         sqlite3_finalize(stmt); // Clean up statement
     }
 
-    void Database::InsertScore(std::string cmd, AddParams params) {
+    void Database::InsertScore(AddParams params) {
         sqlite3_stmt *stmt;
+        m_cmd = "INSERT INTO HIGH_SCORE (player_name, score) VALUES (?,?);";
 
-        this->m_result = sqlite3_prepare_v2(this->m_db, cmd.c_str(), -1, &stmt, nullptr);
+        m_result = sqlite3_prepare_v2(m_db, m_cmd.c_str(), -1, &stmt, nullptr);
 
-        if (!checkError(this->m_result, this->m_db, "Failed to insert Item")) {
+        if (!checkError(m_result, m_db, "Failed to insert Score")) {
             return;
         }
 
         sqlite3_bind_text(stmt, 1, params.name.c_str(), -1, SQLITE_STATIC);
         sqlite3_bind_int(stmt, 2, params.score);
 
-        checkError(sqlite3_step(stmt), this->m_db, "Failed to step insert");
+        checkError(sqlite3_step(stmt), m_db, "Failed to step insert");
 
         sqlite3_finalize(stmt); // Clean up statement
     }
@@ -86,40 +94,68 @@ namespace Database {
         params.json_values = j.dump();
     }
 
-    void Database::Update(std::string cmd) {
+    void Database::Update() {
         sqlite3_stmt *stmt;
 
-        this->m_result = sqlite3_prepare_v2(this->m_db, cmd.c_str(), -1, &stmt, nullptr);
+        m_result = sqlite3_prepare_v2(m_db, m_cmd.c_str(), -1, &stmt, nullptr);
 
-        if (!checkError(this->m_result, this->m_db, "Failed to update Item")) {
+        if (!checkError(m_result, m_db, "Failed to update Item")) {
             return;
         }
 
         sqlite3_finalize(stmt); // Clean up statement
     }
 
-    void Database::ReadAllData(std::string cmd) {
+    std::string Database::ReadAllHighScores(int limit) {
+        std::string   queryResult;
         sqlite3_stmt *stmt;
 
-        this->m_result = sqlite3_prepare_v2(this->m_db, cmd.c_str(), -1, &stmt, nullptr);
+        m_cmd = "SELECT player_name, score FROM HIGH_SCORE LIMIT " + std::to_string(limit) + ";";
 
-        if (!checkError(this->m_result, this->m_db, "Failed to get Items")) {
-            return;
+        m_result = sqlite3_prepare_v2(m_db, m_cmd.c_str(), -1, &stmt, nullptr);
+
+        if (!checkError(m_result, m_db, "Failed to get Items")) {
+            return "bad data";
+        }
+
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            const unsigned char *temp = sqlite3_column_text(stmt, 0);
+            int                  score = sqlite3_column_int(stmt, 1);
+
+            queryResult =
+                "Player: " + std::string(reinterpret_cast<const char *>(temp)) + " : Score " + std::to_string(score);
         }
 
         sqlite3_finalize(stmt); // Clean up statement
+
+        return queryResult;
     }
 
-    void Database::GetSingleEntry(std::string cmd) {
+    std::string Database::GetSingleScore(std::string search) {
+        std::string   queryResult = "";
         sqlite3_stmt *stmt;
 
-        this->m_result = sqlite3_prepare_v2(this->m_db, cmd.c_str(), -1, &stmt, nullptr);
+        m_cmd = "SELECT player_name, score FROM HIGH_SCORE WHERE player_name = ?;";
+        m_result = sqlite3_prepare_v2(m_db, m_cmd.c_str(), -1, &stmt, nullptr);
 
-        if (!checkError(this->m_result, this->m_db, "Failed to get Entry")) {
-            return;
+        if (!checkError(m_result, m_db, "Failed to get " + search + "'s score")) {
+            return "bad data";
+        }
+
+        int bind_rc = sqlite3_bind_text(stmt, 1, search.c_str(), -1, SQLITE_STATIC);
+
+        int rc;
+        while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+            const unsigned char *temp = sqlite3_column_text(stmt, 0);
+            int                  score = sqlite3_column_int(stmt, 1);
+
+            queryResult =
+                "Player: " + std::string(reinterpret_cast<const char *>(temp)) + " : Score " + std::to_string(score);
         }
 
         sqlite3_finalize(stmt); // Clean up statement
+
+        return queryResult;
     }
 
 } // namespace Database

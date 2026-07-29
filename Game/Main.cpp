@@ -18,38 +18,38 @@
  */
 
 void insertDummyData() {
-    Database::AddParams params{2, 67, "Test Player", "Player"};
+    Database::AddParams params{1, 67, "Player", "Player"};
     Database::Database::GetDatabase().ToJSON(params);
 
-    std::string player = "INSERT INTO PLAYER (id, player_name, player_data) VALUES (?, ?,?)";
-    Database::Database::GetDatabase().InsertPlayer(player, params);
+    Database::Database::GetDatabase().InsertPlayer(params);
 
-    std::string score = "INSERT INTO HIGH_SCORE (player_name, score) VALUES (?,?)";
+    Database::Database::GetDatabase().InsertScore(params);
+    params.name = "foo";
+    Database::Database::GetDatabase().InsertScore(params);
+}
 
-    Database::Database::GetDatabase().InsertScore(score, params);
+void getAllDummyData() {
 }
 
 int main(int argc, char *argv[]) {
-    bool init_success;
-
     // Initialization
-    if (init_success = Engine::Engine::GetEngine().Initialize(); !init_success) {
+    if (int init_success = Engine::Engine::GetEngine().Initialize(); !init_success) {
         return -1;
     }
     std::cout << "Successfully initialized the renderer." << std::endl;
 
-    // create audio system
-    Engine::Engine::GetEngine().GetAudio().AddSound("sound", "Assests/sound/wav/bass.wav");
-
-    SpaceGame game;
-    game.Initialize();
-
-    // Text();
     Engine::Font *font = new Engine::Font();
     font->Load("Assests/Fonts/8bitOperatorPlus8-Regular.ttf", 20);
 
     Engine::Text *text = new Engine::Text(font);
-    text->Create(Engine::Engine::GetEngine().GetRenderer(), "Hello World", Engine::Color{1.0f, 1.0f, 1.0f});
+    text->Create(Engine::Engine::GetEngine().GetRenderer(), Database::Database::GetDatabase().GetSingleScore("foo"),
+                 Engine::Color{1.0f, 1.0f, 1.0f});
+
+    // Test Getting all data
+    // Database::Database::GetDatabase().ReadAllHighScores(5);
+
+    SpaceGame game;
+    game.Initialize();
 
     Engine::Scene scene;
 
@@ -87,10 +87,6 @@ int main(int argc, char *argv[]) {
         scene.AddActor(enemy);
     }
 
-    // Photoshop
-    std::vector<Engine::Vector2> points;
-
-    // MAIN LOOP
     bool quit = false;
     while (!quit) {
         // UPDATE
@@ -99,7 +95,7 @@ int main(int argc, char *argv[]) {
             if (event.type == SDL_EVENT_QUIT ||
                 (event.type == SDL_EVENT_KEY_DOWN && event.key.scancode == SDL_SCANCODE_ESCAPE)) {
                 quit = true;
-                // insertDummyData();
+                insertDummyData();
             }
         }
 
@@ -109,38 +105,26 @@ int main(int argc, char *argv[]) {
 
         scene.Update(dt);
 
-        if (Engine::Engine::GetEngine().GetInput().GetButtonPressed(Engine::Input::MouseButton::LEFT)) {
-            points.push_back(Engine::Engine::GetEngine().GetInput().GetMousePosition());
-        }
-
-        Engine::Vector2 position = Engine::Engine::GetEngine().GetInput().GetMousePosition();
-        if (Engine::Engine::GetEngine().GetInput().GetButtonDown(Engine::Input::MouseButton::LEFT)) {
-            if (points.empty()) {
-                points.push_back(Engine::Engine::GetEngine().GetInput().GetMousePosition());
-            } else if ((position - points.back()).length() > 10) {
-                points.push_back(Engine::Engine::GetEngine().GetInput().GetMousePosition());
-            }
-        }
-
         // Render
         Engine::Engine::GetEngine().GetRenderer().SetColor(0.f, 0.f, 0.f, 255.f); // Set draw color to black
         Engine::Engine::GetEngine().GetRenderer().Clear();                        // Clear the screen
 
-        for (int i = 0; i < static_cast<int>(points.size()) - 1; i++) {
-            Engine::Engine::GetEngine().GetRenderer().SetColor(Engine::RandomFloat(256), Engine::RandomFloat(256),
-                                                               Engine::RandomFloat(256), 255);
-            Engine::Engine::GetEngine().GetRenderer().DrawLine(points[i].x, points[i].y, points[i + 1].x,
-                                                               points[i + 1].y);
-        }
-
         // Actor draw
         scene.Draw(Engine::Engine::GetEngine().GetRenderer());
+
         text->Draw(Engine::Engine::GetEngine().GetRenderer(), 40.0f, 40.0f);
 
+        // MAIN LOOP
         Engine::Engine::GetEngine().GetRenderer().Present(); // Present the rendered content to the screen
     }
 
     // SHUTDOWN
+
+    delete font;
+    font = nullptr;
+    delete text;
+    text = nullptr;
+
     Engine::Engine::GetEngine().Destroy(); // Clean up the renderer and window
 
     return 0;

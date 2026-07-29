@@ -50,13 +50,14 @@ namespace Database {
 
         // Database calls
       public:
-        void InsertPlayer(std::string cmd, AddParams params);
-        void InsertScore(std::string cmd, AddParams params);
-        void Update(std::string cmd);
-        void ReadAllData(std::string cmd);
-        void GetSingleEntry(std::string cmd);
+        void        InsertPlayer(AddParams params);
+        void        InsertScore(AddParams params);
+        void        Update();
+        std::string ReadAllHighScores(int limet);
+        std::string GetSingleScore(std::string search);
+        std::string GetSinglePlayer(std::string search);
 
-        void ToJSON(AddParams &params);
+        void        ToJSON(AddParams &params);
 
       private:
         Database() = default;
@@ -66,5 +67,6 @@ namespace Database {
         char       *m_errorMessage = nullptr;
         std::string m_dbPath;
         int         m_result = 0;
+        std::string m_cmd;
     };
 } // namespace Database
