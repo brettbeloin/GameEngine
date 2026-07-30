@@ -10,17 +10,18 @@ namespace Engine {
       public:
         Game() = default;
 
-        explicit Game(Scene *scene) : m_scene {scene} {};
+        explicit Game(Scene *scene) : m_scene{scene} {};
 
         virtual bool Initialize() {
             return true;
         }
-        virtual void Destroy() {}
+        virtual void Destroy() {
+        }
 
         virtual void Update(float st);
-        virtual void Draw(const Renderer &renderer);
+        virtual void Draw(Renderer &renderer);
 
-        void SetScene(Scene *scene) {
+        void         SetScene(Scene *scene) {
             m_scene = scene;
         };
 

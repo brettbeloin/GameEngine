@@ -4,11 +4,8 @@
 
 #pragma once
 #include "Engine.h"
-#include "Font.h"
 #include "Game.h"
 #include "Scene.h"
-#include "Text.h"
-#include <string>
 
 class SpaceGame : public Engine::Game {
   public:
@@ -33,11 +30,11 @@ class SpaceGame : public Engine::Game {
     void Destroy() override;
 
     void Update(float st) override;
-    void Draw(const Engine::Renderer &renderer) override;
+    void Draw(Engine::Renderer &renderer);
 
     void OnPlayerDead();
 
-    int  GetPoints() {
+    int  GetPoints() const {
         return m_score;
     }
 
@@ -45,11 +42,11 @@ class SpaceGame : public Engine::Game {
         m_score += points;
     }
 
-    int GetLives() {
+    int GetLives() const {
         return m_lives;
     }
 
-    float GetFontSize() {
+    float GetFontSize() const {
         return m_fontSize;
     }
 
@@ -57,12 +54,38 @@ class SpaceGame : public Engine::Game {
         m_fontSize = size;
     }
 
-    Engine::Font *GetFont() {
-        return m_Font;
+    Engine::Font *GetFont() const {
+        return m_TitleFont;
     }
 
-    Engine::Text *GetText() {
-        return m_Text;
+    Engine::Text *GetText() const {
+        return m_TitleText;
+    }
+
+    Engine::Font *GetGameFont() const {
+        return m_GameFont;
+    }
+    Engine::Text *GetGameText() const {
+        return m_GameText;
+    }
+    Engine::Font *GetUIFont() const {
+        return m_UIFont;
+    }
+    Engine::Text *GetUIText() const {
+        return m_UIText;
+    }
+
+    void SetGameFont(Engine::Font *font) {
+        m_GameFont = font;
+    }
+    void SetGameText(Engine::Text *text) {
+        m_GameText = text;
+    }
+    void SetUIFont(Engine::Font *font) {
+        m_UIFont = font;
+    }
+    void SetUIText(Engine::Text *text) {
+        m_UIText = text;
     }
 
   private:
@@ -71,16 +94,24 @@ class SpaceGame : public Engine::Game {
     void SpawnEnemy();
 
   private:
-    int           m_score = 0;
-    int           m_lives = 0;
+    int                 m_score = 0;
+    int                 m_lives = 3;
+    int                 m_spawnCount = 0;
 
-    float         m_fontSize = 0.0f;
-    float         m_spawnTime = 5.0f;
+    float               m_fontSize = 0.0f;
+    float               m_spawnTimer = 0.0f;
+    float               m_spawnTime = 0.0f;
 
-    float         m_stateTime = 0.0f;
+    float               m_stateTime = 0.0f;
 
-    GameState     m_state = GameState::TTILE;
+    GameState           m_state = GameState::TTILE;
 
-    Engine::Font *m_Font = nullptr;
-    Engine::Text *m_Text = nullptr;
+    class Engine::Font *m_TitleFont = nullptr;
+    class Engine::Text *m_TitleText = nullptr;
+
+    class Engine::Font *m_GameFont = nullptr;
+    class Engine::Text *m_GameText = nullptr;
+
+    class Engine::Font *m_UIFont = nullptr;
+    class Engine::Text *m_UIText = nullptr;
 };

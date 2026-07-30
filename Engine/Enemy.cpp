@@ -19,7 +19,7 @@ void Enemy::Update(const float dt) {
         Engine::Vector2 fowrard{1, 0}; // ->
         fowrard = fowrard.Rotate(m_transform.rotation * Engine::DegToRad);
 
-        AddVelocity(fowrard * m_speed);
+        AddVelocity(fowrard * m_speed * 100);
     }
 
     // partical system
@@ -38,6 +38,8 @@ void Enemy::OnCollison(Actor *other) {
     if (other->GetTag() == "PlayerBullet") {
         SetDestroyed();
         other->SetDestroyed();
+
+        Engine::Engine::GetEngine().GetAudio().PlaySound("snare");
 
         ((SpaceGame *)m_scene->GetGame())->AddPoints(100);
 

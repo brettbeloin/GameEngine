@@ -1,6 +1,14 @@
 #include "Engine.h"
 #include "SpaceGame.h"
 
+/*
+ * TODO fix the particle system
+  TODO kill player when makes contact with enemy
+  TODO Enemies are invisible if i enable player collision
+  TODO fix score to start with proper number
+  TODO Make the game over transition to start screen
+*/
+
 int main(int argc, char *argv[]) {
     // Initialization
     if (int init_success = Engine::Engine::GetEngine().Initialize(); !init_success) {

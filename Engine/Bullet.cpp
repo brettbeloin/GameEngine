@@ -13,7 +13,7 @@ void Bullet::Update(const float dt) {
 }
 
 void Bullet::OnCollison(Actor *other) {
-    if (other->GetTag() == "Enemy") {
+    if (other->GetName() == "Enemy") {
         SetDestroyed();
         other->SetDestroyed();
     }

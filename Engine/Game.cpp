@@ -9,7 +9,7 @@ namespace Engine {
     void Game::Update(float st) {
         m_scene->Update(st);
     }
-    void Game::Draw(const Renderer& renderer) {
+    void Game::Draw(Renderer &renderer) {
         m_scene->Draw(renderer);
     }
-}
+} // namespace Engine

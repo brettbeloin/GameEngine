@@ -5,11 +5,14 @@
 #include "SpaceGame.h"
 
 #include "Assets.h"
+#include "Audio.h"
 #include "Database.h"
 #include "Enemy.h"
 #include "Engine.h"
 #include "Player.h"
+#include "random.h"
 #include "renderer.h"
+// #include <iostream>
 #include <iostream>
 #include <string>
 
@@ -43,27 +46,34 @@ bool SpaceGame::Initialize() {
 
     m_scene = new Engine::Scene();
     m_scene->SetGame(this);
+    m_fontSize = 50.0f;
 
-    m_Font = new Engine::Font();
+    m_TitleFont = new Engine::Font();
+    m_TitleText = new Engine::Text(m_TitleFont);
+    m_TitleFont->Load("Assests/Fonts/8bitOperatorPlus8-Bold.ttf", m_fontSize);
+    m_TitleText->Create(Engine::Engine::GetEngine().GetRenderer(), "MAIN MENU", Engine::Color{1.0f, 1.0f, 1.0f});
 
-    m_Text = new Engine::Text(m_Font);
+    m_UIFont = new Engine::Font();
+    m_UIText = new Engine::Text(m_UIFont);
+    m_UIFont->Load("Assests/Fonts/8bitOperatorPlus8-Regular.ttf", 20);
 
     Database::AddParams::GetParams().SetParams(1, SpaceGame::GetSpaceGame().GetPoints(),
                                                SpaceGame::GetSpaceGame().GetLives(), "Player", "Player", "");
+
+    Engine::Engine::GetEngine().GetAudio().AddSound("snare", "Assests/sound/wav/snare.wav");
 
     return true;
 }
 
 void SpaceGame::Destroy() {
-    delete m_Font;
-    m_Font = nullptr;
-    delete m_Text;
-    m_Text = nullptr;
+    delete m_TitleFont;
+    m_TitleFont = nullptr;
+    delete m_TitleText;
+    m_TitleText = nullptr;
     Game::Destroy();
 }
 
 void SpaceGame::Update(float st) {
-
     switch (m_state) {
     case GameState::TTILE:
         if (Engine::Engine::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
@@ -73,7 +83,7 @@ void SpaceGame::Update(float st) {
         break;
     case GameState::START_GAME:
         m_score = 0;
-        m_lives = 3;
+        m_lives = 4;
 
         InsertPlayer();
 
@@ -84,17 +94,28 @@ void SpaceGame::Update(float st) {
         m_state = GameState::START_LEVEL;
         break;
     case GameState::START_LEVEL:
-        m_scene->RemoveALLActors();
-        SpawnPlayer();
+        m_stateTime -= st;
+        if (m_stateTime <= 0) {
 
-        m_state = GameState::GAME;
+            m_scene->RemoveALLActors();
+            SpawnPlayer();
+            m_spawnTime = 5.0f;
+
+            m_state = GameState::GAME;
+        }
+
         break;
     case GameState::GAME:
-        m_spawnTime -= st;
+        m_spawnTimer -= st;
 
-        if (m_spawnTime < 0.0f) {
-            m_spawnTime = 5.0f;
+        if (m_spawnTimer <= 0.0f) {
+            m_spawnTimer = m_spawnTime;
             SpawnEnemy();
+            m_spawnCount++;
+
+            if (m_score % 500 == 0) {
+                m_spawnTime -= .05;
+            }
         }
 
         break;
@@ -102,8 +123,9 @@ void SpaceGame::Update(float st) {
         InsertScore();
 
         m_stateTime -= st;
-
         if (m_stateTime <= 0) {
+            m_scene->RemoveALLActors();
+            m_state = GameState::TTILE;
         }
 
         break;
@@ -112,32 +134,22 @@ void SpaceGame::Update(float st) {
     Game::Update(st);
 }
 
-void SpaceGame::Draw(const Engine::Renderer &renderer) {
+void SpaceGame::Draw(Engine::Renderer &renderer) {
     switch (m_state) {
     case GameState::TTILE:
-        m_fontSize = 50.0f;
-        m_Font->Load("Assests/Fonts/8bitOperatorPlus8-Bold.ttf", m_fontSize);
-        m_Text->Create(Engine::Engine::GetEngine().GetRenderer(), "MAIN MENU", Engine::Color{1.0f, 1.0f, 1.0f});
-        m_Text->Draw(Engine::Engine::GetEngine().GetRenderer(), 40.0f, 40.0f);
-
-        m_Text->Draw(renderer, 40.0f, 40.0f);
-
+        m_TitleText->Draw(renderer, 115, 250);
         break;
     case GameState::START_GAME:
     case GameState::START_LEVEL:
     case GameState::GAME:
-        // SpaceGame::GetSpaceGame().SetFontsize(20);
-        // SpaceGame::GetSpaceGame().GetFont()->Load("Assests/Fonts/8bitOperatorPlus8-Regular.ttf",
-        //                                           SpaceGame::GetSpaceGame().GetFontSize());
-        //
-        // SpaceGame::GetSpaceGame().GetText()->Create(Engine::Engine::GetEngine().GetRenderer(),
-        //                                             "Score: " + std::to_string(m_score) +
-        //                                                 " Lives: " + std::to_string(m_lives),
-        //                                             Engine::Color{1.0f, 1.0f, 1.0f});
-        //
-        // SpaceGame::GetSpaceGame().GetText()->Draw(Engine::Engine::GetEngine().GetRenderer(), 40.0f, 40.0f);
+        m_UIText->Create(Engine::Engine::GetEngine().GetRenderer(),
+                         "Score: " + std::to_string(m_score) + " Lives: " + std::to_string(m_lives),
+                         Engine::Color{1.0f, 1.0f, 1.0f});
+        m_UIText->Draw(renderer, 40.0f, 40.0f);
         break;
     case GameState::GAME_OVER:
+        m_TitleText->Create(renderer, "GAME OVER", {1.0f, 1.0f, 1.0f});
+        m_TitleText->Draw(renderer, 115, 250);
 
         break;
     }
@@ -175,7 +187,7 @@ void SpaceGame::SpawnEnemy() {
             90.0f, 10.0f
         };
         enemy_desc.damping = 10.0f;
-        enemy_desc.speed = Engine::RandomFloat(1000.0f, 2000.0f);
+        enemy_desc.speed = Engine::RandomFloat(200.0f, 500.0f);
 
         Enemy *enemy = new Enemy{enemy_desc};
 
