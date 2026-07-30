@@ -5,6 +5,8 @@
 #include "Assets.h"
 #include "Bullet.h"
 #include "Engine.h"
+#include "SpaceGame.h"
+#include <iostream>
 
 void Player::Update(const float dt) {
     // Movement
@@ -39,6 +41,15 @@ void Player::Update(const float dt) {
 
     AddVelocity(velocity);
 
+    // partical system
+    Engine::Particle particle;
+    particle.position = m_transform.position;
+    particle.color = {1.0f, 1.0f, 1.0f};
+    particle.lifespan = Engine::RandomFloat(0.5f, 1.5f);
+    particle.velocity = {Engine::RandomFloat(-200.0f, 200.0f), Engine::RandomFloat(-200.0f, 200.0f)};
+
+    Engine::Engine::GetEngine().GetPS().AddParticle(particle);
+
     // fire
     if (Engine::Engine::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
         BulletDesc bullet_desc;
@@ -58,7 +69,9 @@ void Player::Update(const float dt) {
 }
 
 void Player::OnCollison(Actor *other) {
-    if (other->GetName() == "Enemy") {
+    if (other->GetTag() == "Enemy") {
         SetDestroyed();
+
+        ((SpaceGame *)m_scene->GetGame())->OnPlayerDead();
     }
 }

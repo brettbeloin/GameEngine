@@ -3,11 +3,20 @@
 //
 #include "Scene.h"
 #include "Actor.h"
+#include <iostream>
 
 void Engine::Scene::AddActor(Actor *actor) {
     actor->m_scene = this;
     m_pendingActors.push_back(actor);
 };
+
+void Engine::Scene::RemoveALLActors() {
+    for (auto actor : m_actors) {
+        delete actor;
+    }
+
+    m_actors.clear();
+}
 
 void Engine::Scene::Update(float dt) {
     // update actor

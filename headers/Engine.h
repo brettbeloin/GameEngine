@@ -1,22 +1,24 @@
 #pragma once
 
+#include "File.h"
 #include "MathUtils.h"
+#include "Text.h"
 #include "Transform.h"
 #include "random.h"
 #include "vector2.h"
 #include "vector3.h"
 
 // systems
-#include <iostream>
 
+#include "Audio.h"
 #include "GameTime.h"
 #include "Input.h"
+#include "ParticalSystem.h"
 #include "renderer.h"
-#include "Text.h"
 
+// framework
 #include "Actor.h"
-#include "Audio.h"
-#include "File.h"
+#include "Game.h"
 #include "Scene.h"
 
 namespace Engine {
@@ -67,18 +69,26 @@ namespace Engine {
         Audio &GetAudio() {
             return m_audio;
         }
+        ParticleSystem &GetPS() {
+            return m_particleSystem;
+        }
+
+        Engine(const Engine &) = delete;
+        Engine &operator=(const Engine &) = delete;
 
       private:
         Engine() = default;
 
       private:
-        Input    m_input;
-        Renderer m_renderer;
+        Input          m_input;
+        Renderer       m_renderer;
 
-        Time     m_time;
+        Time           m_time;
 
-        Window   m_window;
-        Audio    m_audio;
+        Window         m_window;
+        Audio          m_audio;
+
+        ParticleSystem m_particleSystem;
     };
 
 } // namespace Engine

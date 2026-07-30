@@ -1,9 +1,7 @@
 #include "Bullet.h"
 #include "Actor.h"
-#include "Engine.h"
 #include "MathUtils.h"
 #include "vector2.h"
-#include <iostream>
 
 void Bullet::Update(const float dt) {
     Engine::Vector2 forword{1.0f, 0.0f};
@@ -11,11 +9,11 @@ void Bullet::Update(const float dt) {
 
     SetVelocity(velocity);
 
-    Engine::Actor::Update(dt);
+    Actor::Update(dt);
 }
 
 void Bullet::OnCollison(Actor *other) {
-    if (other->GetTag() == "PlayerBullet") {
+    if (other->GetTag() == "Enemy") {
         SetDestroyed();
         other->SetDestroyed();
     }

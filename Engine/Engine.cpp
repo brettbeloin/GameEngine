@@ -11,6 +11,17 @@ namespace Engine {
             return false;
         }
 
+        std::cout << "particle system\n";
+        if (!m_particleSystem.Initialize(5000)) {
+            std::cerr << "Failed to initialize particle system." << std::endl;
+            return false;
+        }
+
+        if (!m_audio.Initialize()) {
+            std::cerr << "Failed to initialize input." << std::endl;
+            return false;
+        }
+
         if (!m_input.Initialize()) {
             std::cerr << "Failed to initialize input." << std::endl;
             return false;
@@ -21,17 +32,13 @@ namespace Engine {
             return false;
         }
 
-        if (!m_audio.Initialize()) {
-            std::cerr << "Failed to initialize input." << std::endl;
-            return false;
-        }
-
         return true;
     }
 
     void Engine::Destroy() {
         m_input.Destroy();
         m_audio.Shutdown();
+        m_particleSystem.Shutdown();
         Database::Database::GetDatabase().Destroy();
         m_renderer.Destroy();
     }
@@ -40,5 +47,6 @@ namespace Engine {
         m_input.Update();
         m_audio.Update();
         m_time.Tick();
+        m_particleSystem.Update(m_time.GetDeltaTime());
     }
 } // namespace Engine

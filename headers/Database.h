@@ -7,11 +7,29 @@
 namespace Database {
 
     struct AddParams {
-        int         id;
-        int         score;
-        std::string name;
-        std::string tag;
-        std::string json_values;
+        static AddParams &GetParams() {
+            static AddParams params;
+            return params;
+        }
+
+        void SetParams(int id, int score, int lives, std::string name, std::string tag, std::string json) {
+            m_id = id;
+            m_score = score;
+            m_lives = lives;
+            m_name = name;
+            m_tag = tag;
+            m_json_values = json;
+        }
+
+        int         m_id;
+        int         m_score;
+        int         m_lives;
+        std::string m_name;
+        std::string m_tag;
+        std::string m_json_values;
+
+      private:
+        AddParams() = default;
     };
 
     class Database {

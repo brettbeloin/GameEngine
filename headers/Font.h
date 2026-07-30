@@ -9,15 +9,15 @@ struct TTF_Font;
 
 namespace Engine {
     class Font {
-    public:
+      public:
         Font() = default;
         ~Font();
 
-        bool Load(const std::string& name, float fontSize);
+        bool Load(const std::string &name, float fontSize);
 
-    private:
         friend class Text;
 
-        TTF_Font* m_ttfFont{ nullptr };
+      private:
+        TTF_Font *m_ttfFont{nullptr};
     };
-}
+} // namespace Engine

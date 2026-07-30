@@ -60,9 +60,9 @@ namespace Database {
             return;
         }
 
-        sqlite3_bind_int(stmt, 1, params.id);
-        sqlite3_bind_text(stmt, 2, params.name.c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 3, params.json_values.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_int(stmt, 1, params.m_id);
+        sqlite3_bind_text(stmt, 2, params.m_name.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 3, params.m_json_values.c_str(), -1, SQLITE_STATIC);
 
         checkError(sqlite3_step(stmt), m_db, "Failed to step insert");
 
@@ -79,8 +79,8 @@ namespace Database {
             return;
         }
 
-        sqlite3_bind_text(stmt, 1, params.name.c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_int(stmt, 2, params.score);
+        sqlite3_bind_text(stmt, 1, params.m_name.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_int(stmt, 2, params.m_score);
 
         checkError(sqlite3_step(stmt), m_db, "Failed to step insert");
 
@@ -89,9 +89,10 @@ namespace Database {
 
     void Database::ToJSON(AddParams &params) {
         nlohmann::json j;
-        j["tag"] = params.tag;
-        j["score"] = params.score;
-        params.json_values = j.dump();
+        j["tag"] = params.m_tag;
+        j["score"] = params.m_score;
+        j["lives"] = params.m_lives;
+        params.m_json_values = j.dump();
     }
 
     void Database::Update() {
@@ -144,13 +145,36 @@ namespace Database {
 
         int bind_rc = sqlite3_bind_text(stmt, 1, search.c_str(), -1, SQLITE_STATIC);
 
-        int rc;
-        while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
             const unsigned char *temp = sqlite3_column_text(stmt, 0);
             int                  score = sqlite3_column_int(stmt, 1);
 
             queryResult =
                 "Player: " + std::string(reinterpret_cast<const char *>(temp)) + " : Score " + std::to_string(score);
+        }
+
+        sqlite3_finalize(stmt); // Clean up statement
+
+        return queryResult;
+    }
+
+    std::string Database::GetSinglePlayer(std::string search) {
+        std::string   queryResult = "";
+        sqlite3_stmt *stmt;
+
+        m_cmd = "SELECT player_data FROM PLAYER WHERE player_name = ?;";
+        m_result = sqlite3_prepare_v2(m_db, m_cmd.c_str(), -1, &stmt, nullptr);
+
+        if (!checkError(m_result, m_db, "Failed to get " + search)) {
+            return "No Player";
+        }
+
+        sqlite3_bind_text(stmt, 1, search.c_str(), -1, SQLITE_STATIC);
+
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            const unsigned char *obj = sqlite3_column_text(stmt, 0);
+
+            queryResult = std::string(reinterpret_cast<const char *>(obj));
         }
 
         sqlite3_finalize(stmt); // Clean up statement

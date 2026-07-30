@@ -29,6 +29,7 @@ add_library(Engine STATIC
     Engine/Text.cpp
     Engine/Game.cpp
     Engine/SpaceGame.cpp
+    Engine/ParticalSystem.cpp
 
     external/sqlite/sqlite3.c
 )
