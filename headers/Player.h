@@ -25,10 +25,19 @@ class Player : public Engine::Actor {
 
     void OnCollison(Actor *other) override;
 
+    void SetInvulnerable(float time) {
+        m_invulnerableTime = time;
+    }
+
+    bool IsInvulnerable() const {
+        return m_invulnerableTime > 0.0f;
+    }
+
   private:
     Player() = default;
 
   private:
     int   m_ammo = 0;
     float m_speed = 0.0f;
+    float m_invulnerableTime = 0.0f;
 };

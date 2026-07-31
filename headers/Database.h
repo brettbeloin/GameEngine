@@ -3,6 +3,7 @@
 #include "nlohmann/json.hpp"
 #include "sqlite3.h"
 #include <string>
+#include <vector>
 
 namespace Database {
 
@@ -73,12 +74,12 @@ namespace Database {
 
         // Database calls
       public:
-        void        InsertPlayer(const AddParams params);
-        void        InsertScore(const AddParams params);
-        void        Update(const int score);
-        std::string ReadAllHighScores(const int limet);
-        std::string GetSingleScore(const std::string search);
-        std::string GetSinglePlayer(const std::string search);
+        void                     InsertPlayer(const AddParams params);
+        void                     InsertScore(const AddParams params);
+        void                     Update(const int score);
+        std::vector<std::string> ReadAllHighScores(const int limit);
+        std::string              GetSingleScore(const std::string search);
+        std::string              GetSinglePlayer(const std::string search);
 
         void        ToJSON(AddParams &params);
 

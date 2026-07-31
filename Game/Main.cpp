@@ -4,7 +4,7 @@
 /*
  * TODO fix the particle system
   TODO kill player when makes contact with enemy
-  TODO Enemies are invisible if i enable player collision
+  TODO enemies move to fast and kill player, Slow enemy in game.
   TODO fix score to start with proper number
   TODO Make the game over transition to start screen
 */

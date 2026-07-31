@@ -116,24 +116,23 @@ namespace Database {
         sqlite3_finalize(stmt); // Clean up statement
     }
 
-    std::string Database::ReadAllHighScores(const int limit) {
-        std::string   queryResult;
-        sqlite3_stmt *stmt;
+    std::vector<std::string> Database::ReadAllHighScores(const int limit) {
+        std::vector<std::string> queryResult;
+        sqlite3_stmt            *stmt;
 
-        m_cmd = "SELECT player_name, score FROM HIGH_SCORE LIMIT " + std::to_string(limit) + ";";
+        m_cmd = "SELECT player_name, score FROM HIGH_SCORE ORDER BY score DESC LIMIT " + std::to_string(limit) + ";";
 
         m_result = sqlite3_prepare_v2(m_db, m_cmd.c_str(), -1, &stmt, nullptr);
 
         if (!checkError(m_result, m_db, "Failed to get Items")) {
-            return "bad data";
+            return queryResult;
         }
 
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             const unsigned char *temp = sqlite3_column_text(stmt, 0);
             int                  score = sqlite3_column_int(stmt, 1);
 
-            queryResult =
-                "Player: " + std::string(reinterpret_cast<const char *>(temp)) + " : Score " + std::to_string(score);
+            queryResult.push_back(std::string(reinterpret_cast<const char *>(temp)) + " : " + std::to_string(score));
         }
 
         sqlite3_finalize(stmt); // Clean up statement

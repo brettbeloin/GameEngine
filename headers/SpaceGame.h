@@ -6,6 +6,8 @@
 #include "Engine.h"
 #include "Game.h"
 #include "Scene.h"
+#include <string>
+#include <vector>
 
 class SpaceGame : public Engine::Game {
   public:
@@ -32,7 +34,7 @@ class SpaceGame : public Engine::Game {
     void Update(float st) override;
     void Draw(Engine::Renderer &renderer);
 
-    void OnPlayerDead();
+    void OnPlayerHit();
 
     int  GetPoints() const {
         return m_score;
@@ -42,8 +44,8 @@ class SpaceGame : public Engine::Game {
         m_score += points;
     }
 
-    int GetLives() const {
-        return m_lives;
+    int GetHealth() const {
+        return m_health;
     }
 
     float GetFontSize() const {
@@ -92,11 +94,14 @@ class SpaceGame : public Engine::Game {
     SpaceGame() = default;
     void SpawnPlayer();
     void SpawnEnemy();
+    void RefreshHighScores();
 
   private:
     int                 m_score = 0;
-    int                 m_lives = 3;
+    int                 m_health = 10;
     int                 m_spawnCount = 0;
+
+    bool                m_hardMode = false;
 
     float               m_fontSize = 0.0f;
     float               m_spawnTimer = 0.0f;
@@ -114,4 +119,7 @@ class SpaceGame : public Engine::Game {
 
     class Engine::Font *m_UIFont = nullptr;
     class Engine::Text *m_UIText = nullptr;
+    std::string         m_lastUIString;
+
+    std::vector<class Engine::Text *> m_HighScoreTexts;
 };

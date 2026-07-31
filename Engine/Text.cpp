@@ -19,6 +19,11 @@ namespace Engine {
     bool Text::Create(Renderer &renderer, const std::string &text, const Color &color) {
         // create a surface using the font, text string and color
 
+        if (m_texture != nullptr) {
+            SDL_DestroyTexture(m_texture);
+            m_texture = nullptr;
+        }
+
         SDL_Color    c{(uint8_t)(color.r * 255), (uint8_t)(color.g * 255), (uint8_t)(color.b * 255), 255};
 
         SDL_Surface *surface = TTF_RenderText_Solid(m_font->m_ttfFont, text.c_str(), text.size(), c);

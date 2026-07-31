@@ -9,6 +9,10 @@
 #include <iostream>
 
 void Player::Update(const float dt) {
+    if (m_invulnerableTime > 0.0f) {
+        m_invulnerableTime -= dt;
+    }
+
     // Movement
 
     float thrust = 0.0f;
@@ -69,9 +73,9 @@ void Player::Update(const float dt) {
 }
 
 void Player::OnCollison(Actor *other) {
-    if (other->GetName() == "Enemy") {
+    if (other->GetName() == "Enemy" && !IsInvulnerable()) {
         SetDestroyed();
 
-        ((SpaceGame *)m_scene->GetGame())->OnPlayerDead();
+        ((SpaceGame *)m_scene->GetGame())->OnPlayerHit();
     }
 }

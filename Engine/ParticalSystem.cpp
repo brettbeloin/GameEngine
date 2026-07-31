@@ -58,8 +58,6 @@ namespace Engine {
             if (!particle.active) {
                 return &particle;
             }
-
-            return nullptr;
         }
 
         return nullptr;
