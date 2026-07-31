@@ -7,9 +7,7 @@
 
 namespace Engine {
     class Scene;
-
     class Actor {
-
       public:
         struct ActorDesc {
             std::string name;

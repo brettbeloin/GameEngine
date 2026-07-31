@@ -49,7 +49,7 @@ namespace Database {
         }
     }
 
-    void Database::InsertPlayer(AddParams params) {
+    void Database::InsertPlayer(const AddParams params) {
         sqlite3_stmt *stmt;
 
         m_cmd = "INSERT INTO PLAYER (id, player_name, player_data) VALUES (?,?,?) ON CONFLICT(id) DO NOTHING;";
@@ -69,7 +69,7 @@ namespace Database {
         sqlite3_finalize(stmt); // Clean up statement
     }
 
-    void Database::InsertScore(AddParams params) {
+    void Database::InsertScore(const AddParams params) {
         sqlite3_stmt *stmt;
         m_cmd = "INSERT INTO HIGH_SCORE (player_name, score) VALUES (?,?);";
 
@@ -91,23 +91,32 @@ namespace Database {
         nlohmann::json j;
         j["tag"] = params.m_tag;
         j["score"] = params.m_score;
-        j["lives"] = params.m_lives;
         params.m_json_values = j.dump();
     }
 
-    void Database::Update() {
-        sqlite3_stmt *stmt;
+    void Database::Update(const int score) {
+        sqlite3_stmt  *stmt;
+        nlohmann::json j;
 
+        AddParams::GetParams().m_score = score;
+        ToJSON(AddParams::GetParams());
+
+        m_cmd = "UPDATE PLAYER SET player_data = ? WHERE id = ?";
         m_result = sqlite3_prepare_v2(m_db, m_cmd.c_str(), -1, &stmt, nullptr);
 
         if (!checkError(m_result, m_db, "Failed to update Item")) {
             return;
         }
 
+        sqlite3_bind_text(stmt, 1, AddParams::GetParams().m_json_values.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_int(stmt, 2, AddParams::GetParams().m_id);
+
+        checkError(sqlite3_step(stmt), m_db, "Unable to update Player score");
+
         sqlite3_finalize(stmt); // Clean up statement
     }
 
-    std::string Database::ReadAllHighScores(int limit) {
+    std::string Database::ReadAllHighScores(const int limit) {
         std::string   queryResult;
         sqlite3_stmt *stmt;
 
@@ -132,7 +141,7 @@ namespace Database {
         return queryResult;
     }
 
-    std::string Database::GetSingleScore(std::string search) {
+    std::string Database::GetSingleScore(const std::string search) {
         std::string   queryResult = "";
         sqlite3_stmt *stmt;
 
@@ -158,7 +167,7 @@ namespace Database {
         return queryResult;
     }
 
-    std::string Database::GetSinglePlayer(std::string search) {
+    std::string Database::GetSinglePlayer(const std::string search) {
         std::string   queryResult = "";
         sqlite3_stmt *stmt;
 

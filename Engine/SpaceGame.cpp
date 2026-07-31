@@ -4,6 +4,7 @@
 
 #include "SpaceGame.h"
 
+#include "Actor.h"
 #include "Assets.h"
 #include "Audio.h"
 #include "Database.h"
@@ -13,22 +14,7 @@
 #include "random.h"
 #include "renderer.h"
 // #include <iostream>
-#include <iostream>
 #include <string>
-
-std::string GetPlayerData() {
-    std::string playerData = Database::Database::GetDatabase().GetSinglePlayer("Player");
-    // std::cout << playerData << "\n";
-
-    nlohmann::json j = nlohmann::json::parse(playerData);
-    int            score = j["score"];
-    int            lives = j["lives"];
-
-    return "Score: " + std::to_string(score) + " lives: " + std::to_string(lives);
-}
-
-void DisplayUI() {
-}
 
 void InsertPlayer() {
     Database::Database::GetDatabase().ToJSON(Database::AddParams::GetParams());
@@ -37,7 +23,7 @@ void InsertPlayer() {
 }
 
 void InsertScore() {
-
+    Database::AddParams::GetParams().m_score = SpaceGame::GetSpaceGame().GetPoints();
     Database::Database::GetDatabase().InsertScore(Database::AddParams::GetParams());
 }
 
@@ -58,7 +44,9 @@ bool SpaceGame::Initialize() {
     m_UIFont->Load("Assests/Fonts/8bitOperatorPlus8-Regular.ttf", 20);
 
     Database::AddParams::GetParams().SetParams(1, SpaceGame::GetSpaceGame().GetPoints(),
-                                               SpaceGame::GetSpaceGame().GetLives(), "Player", "Player", "");
+                                               SpaceGame::GetSpaceGame().GetLives(),
+                                               Player::GetPlayer().GetTransform().position.x,
+                                               Player::GetPlayer().GetTransform().position.y, "Player", "Player", "");
 
     Engine::Engine::GetEngine().GetAudio().AddSound("snare", "Assests/sound/wav/snare.wav");
 
@@ -121,6 +109,7 @@ void SpaceGame::Update(float st) {
         break;
     case GameState::GAME_OVER:
         InsertScore();
+        Database::Database::GetDatabase().Update(m_score);
 
         m_stateTime -= st;
         if (m_stateTime <= 0) {

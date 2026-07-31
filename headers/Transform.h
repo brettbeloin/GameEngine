@@ -3,7 +3,7 @@
 
 namespace Engine {
     struct Transform {
-        Engine::Vector2 position;
+        Engine::Vector2 position = {250, 250};
         float           rotation;
         float           scale;
     };

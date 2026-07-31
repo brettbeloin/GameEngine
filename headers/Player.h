@@ -11,7 +11,11 @@ struct PlayerDesc : public Engine::Actor::ActorDesc {
 
 class Player : public Engine::Actor {
   public:
-    Player() = default;
+    static Player &GetPlayer() {
+        static Player Player;
+        return Player;
+    }
+
     Player(const PlayerDesc &desc) : Actor{desc}, m_speed{desc.speed} {};
     Player(const float speed, const Engine::Transform &transform) : Actor{transform}, m_speed{speed} {};
     Player(const float speed, const Engine::Transform &transform, const Engine::Model &model)
@@ -20,6 +24,9 @@ class Player : public Engine::Actor {
     void Update(float dt) override;
 
     void OnCollison(Actor *other) override;
+
+  private:
+    Player() = default;
 
   private:
     int   m_ammo = 0;

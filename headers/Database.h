@@ -12,10 +12,13 @@ namespace Database {
             return params;
         }
 
-        void SetParams(int id, int score, int lives, std::string name, std::string tag, std::string json) {
+        void SetParams(int id, int score, int lives, int x, int y, std::string name, std::string tag,
+                       std::string json) {
             m_id = id;
             m_score = score;
             m_lives = lives;
+            m_pos_x = x;
+            m_pos_y = y;
             m_name = name;
             m_tag = tag;
             m_json_values = json;
@@ -24,6 +27,8 @@ namespace Database {
         int         m_id;
         int         m_score;
         int         m_lives;
+        int         m_pos_x;
+        int         m_pos_y;
         std::string m_name;
         std::string m_tag;
         std::string m_json_values;
@@ -68,12 +73,12 @@ namespace Database {
 
         // Database calls
       public:
-        void        InsertPlayer(AddParams params);
-        void        InsertScore(AddParams params);
-        void        Update();
-        std::string ReadAllHighScores(int limet);
-        std::string GetSingleScore(std::string search);
-        std::string GetSinglePlayer(std::string search);
+        void        InsertPlayer(const AddParams params);
+        void        InsertScore(const AddParams params);
+        void        Update(const int score);
+        std::string ReadAllHighScores(const int limet);
+        std::string GetSingleScore(const std::string search);
+        std::string GetSinglePlayer(const std::string search);
 
         void        ToJSON(AddParams &params);
 
